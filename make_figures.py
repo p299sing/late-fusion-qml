@@ -28,7 +28,7 @@ STYLE = {
     "fontsize": 8,
 }
 plt.rcParams.update({
-    # Publishers reject Type 3 fonts, even inside graphics -> embed TrueType (Type 42)
+    # AAAI forbids Type 3 fonts, even inside graphics -> embed TrueType (Type 42)
     "pdf.fonttype": 42, "ps.fonttype": 42,
     "font.size": STYLE["fontsize"], "axes.titlesize": STYLE["fontsize"],
     "axes.labelsize": STYLE["fontsize"], "legend.fontsize": STYLE["fontsize"] - 1,
@@ -197,7 +197,7 @@ def fig_multilayer():
 
 
 def fig_scale_qubits():
-    """Width scale check: fusion tracks reconstruction as register width grows to 8 qubits."""
+    """AAAI scale check: fusion tracks reconstruction as register width grows to 8 qubits."""
     rows = _load("scale_qubits_results.json")
     ns = [r["qubits"] for r in rows]
     fig, ax = plt.subplots(figsize=STYLE["figsize"])
@@ -269,6 +269,18 @@ def fig_scaling_panel():
     fig, (ax1, ax2, ax4) = plt.subplots(1, 3, figsize=(7.0, 1.30),
                                         gridspec_kw={"width_ratios": [1.5, 1.2, 1]})
     rows = _load("scaleup_results.json")
+    try:   # n=14 exact-reference extension (exp_scaleup14): one aggregated point at k=7
+        n14 = [r for r in _load("scaleup_n14.json") if r["n_cuts"] == 7]
+        if n14:
+            rows.append({"qubits": 14, "n_cuts": 7, "n_seeds": len(n14),
+                         "acc_fusion": float(np.mean([r["acc_fusion"] for r in n14])),
+                         "acc_fusion_std": float(np.std([r["acc_fusion"] for r in n14])),
+                         "acc_B0": float(np.mean([r["acc_B0"] for r in n14])),
+                         "acc_B0_std": float(np.std([r["acc_B0"] for r in n14])),
+                         "recon_overhead_9k": float(9 ** 7)})
+            rows.sort(key=lambda r: (r["n_cuts"], r["qubits"]))
+    except FileNotFoundError:
+        pass
     ks = [r["n_cuts"] for r in rows]
     (l_ovr,) = ax1.semilogy(ks, [r["recon_overhead_9k"] for r in rows], ":",
                             color=STYLE["recon_color"], lw=1, label="recon overhead $9^k$")
@@ -285,10 +297,10 @@ def fig_scaling_panel():
                            yerr=[r["acc_fusion_std"] for r in rows], marker="o", ls="-",
                            color=STYLE["fusion_color"], ms=4, capsize=2, label="late fusion")
     for r in rows:
-        if r["n_cuts"] in (6, 8, 10):
-            # k=8 and k=10 labels go ABOVE their markers (clear of the
+        if r["n_cuts"] in (6, 7, 8, 10):
+            # k=7, k=8 and k=10 labels go ABOVE their markers (clear of the
             # lower-right legend); the offset also clears the errorbar cap
-            dy = 9 if r["n_cuts"] in (8, 10) else -11
+            dy = 9 if r["n_cuts"] in (7, 8, 10) else -11
             # k=10 sits on the right spine: right-align it so the label does not
             # spill over the twin (accuracy) axis ticks.
             last = r["n_cuts"] == max(ks)
