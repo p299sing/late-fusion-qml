@@ -1,0 +1,46 @@
+[
+  {
+    "qubits": 14,
+    "n_cuts": 1,
+    "seed": 1,
+    "acc_fusion": 0.8833333333333333,
+    "acc_B0": 0.85,
+    "recon_overhead_9k": 9.0,
+    "fusion_time_s": 1194.7398071289062,
+    "b0_time_s": 4746.769828796387,
+    "b0_iters": 35
+  },
+  {
+    "qubits": 14,
+    "n_cuts": 4,
+    "seed": 0,
+    "acc_fusion": 0.9,
+    "acc_B0": 0.85,
+    "recon_overhead_9k": 6561.0,
+    "fusion_time_s": 1192.399296760559,
+    "b0_time_s": 4788.5629987716675,
+    "b0_iters": 35
+  },
+  {
+    "qubits": 14,
+    "n_cuts": 1,
+    "seed": 2,
+    "acc_fusion": 0.8333333333333334,
+    "acc_B0": 0.7666666666666667,
+    "recon_overhead_9k": 9.0,
+    "fusion_time_s": 1224.0600085258484,
+    "b0_time_s": 4953.631166219711,
+    "b0_iters": 35
+  },
+  {
+    "qubits": 14,
+    "n_cuts": 1,
+    "seed": 0,
+    "acc_fusion": 0.9,
+    "acc_B0": 0.85,
+    "recon_overhead_9k": 9.0,
+    "fusion_time_s": 1197.574842453003,
+    "b0_time_s": 5201.307051420212,
+    "b0_iters": 35
+  }
+]

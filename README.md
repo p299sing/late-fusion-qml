@@ -37,13 +37,13 @@ Python 3.13, NumPy 2.5, SciPy 1.18, scikit-learn 1.9, Qiskit 2.5, Qiskit-Aer 0.1
 | Fig. 2 (uncoupled vs frozen fusion, alpha sweep) | `python -m experiments.exp_independent` |
 | Fig. 3 (shot and device noise) | `python -m experiments.exp_shots`, `exp_shots_total`, `exp_noise` |
 | Fig. 1(b) (physical 9^k overhead) | `python -m experiments.exp_qiskit` |
-| live hardware (needs an IBM account) | `python -m experiments.exp_hardware`, `exp_hardware_budget`, `exp_hardware_qmi` |
+| live hardware (needs an IBM account) | `python -m experiments.exp_hardware`, `exp_hardware_budget`; multi-backend sensitivity and the dial on a device: `exp_hardware_qmi budget` / `exp_hardware_qmi dial` → `hardware_qmi_budget.json`, `hardware_qmi_dial.json` |
 | physical reconstruction dial (Fig. 4) | `python -m experiments.exp_qdial_physical` |
 | diagnostic grid (104 runs) | `python -m experiments.exp_dense_alpha` |
 | classical split-feature fusion / train-free proxy | `python -m experiments.exp_classical_split` |
 | entangled-data boundary (Fig. 5) | `python -m experiments.exp_quantum` |
 | TFIM | `python -m experiments.exp_tfim` |
-| scaling and the trained deep-coupling study | `python -m experiments.exp_scaleup`, `exp_scale_qubits`, `exp_deep_coupling` |
+| scaling and the trained deep-coupling study | `python -m experiments.exp_scaleup`, `exp_scaleup14`, `exp_scale_qubits`, `exp_deep_coupling` |
 | paired statistics and TOST equivalence (appendix D) | `python -m experiments.analyze_significance` |
 | all figures | `python make_figures.py` |
 

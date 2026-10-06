@@ -79,12 +79,16 @@ def _job_id(job):
 def run_budget(args):
     backend, sampler, label, cal = _connect(args.backend, args.dry_run)
     print(f"target {label}  calibration {cal}  budget {args.budget}  seeds {args.transpile_seeds}", flush=True)
+    done = {(r["tag"], r["backend"], r["transpile_seed"], r["k"], r["instance"])
+            for r in (json.load(open(OUT_BUDGET)) if os.path.exists(OUT_BUDGET) else [])}
     for tseed in args.transpile_seeds:
         for inst in range(args.instances):
             rng = np.random.default_rng(SEED + inst)
             for n_A, n_B, k in CONFIGS:
                 if args.k and k not in args.k:
                     continue
+                if (args.tag, label, tseed, k, inst) in done:
+                    print(f"[{args.tag}] tseed={tseed} k={k} inst={inst}: already recorded, skipping", flush=True); continue
                 n = n_A + n_B
                 obs_labels = _observables(n)
                 params = rng.uniform(-np.pi, np.pi, 2 * (2 * n_A) + 2 * (2 * n_B))
@@ -202,7 +206,11 @@ def run_dial(args):
     T_te_exact = pc.term_matrix(Xte, estimator="exact")
     print(f"target {label} cal {cal}; model alpha={args.alpha} seed={args.seed} phi={pc.phi:+.3f} "
           f"kappa^k={pc.coeffs.__abs__().sum():.2f}; n_test={len(Xte)} shots={args.shots}", flush=True)
+    done_Q = {r["Q"] for r in (json.load(open(OUT_DIAL)) if os.path.exists(OUT_DIAL) else [])
+              if r.get("tag") == args.tag and r.get("backend") == label and r.get("seed") == args.seed and r.get("alpha") == args.alpha}
     for Q in args.Q:
+        if Q in done_Q:
+            print(f"[{args.tag}] Q={Q}: already recorded for {label}, skipping", flush=True); continue
         t0 = time.time(); jobs = []
         keep = qdial_kept_mask(pc.coeffs, Q); cost = qdial_cost(pc.coeffs, Q)
         def feats(T, S):
