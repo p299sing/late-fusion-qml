@@ -59,7 +59,7 @@ def one_run(job):
         "acc_B2_mlp": res["B2_fusion_mlp"]["accuracy"],
         "acc_B6": res["B6_kawase_sum"]["accuracy"],
         "acc_B7": res["B7_ent_ablation"]["accuracy"],
-        # F1 / AUC for the main-text table (QMI revision item G4; AAAI reviewer R3-M5)
+        # F1 / AUC for the main-text table (reviewer request)
         "f1_B0": res["B0_uncut"]["f1"], "auc_B0": res["B0_uncut"]["auc"],
         "f1_B2_mlp": res["B2_fusion_mlp"]["f1"], "auc_B2_mlp": res["B2_fusion_mlp"]["auc"],
         "f1_B6": res["B6_kawase_sum"]["f1"], "auc_B6": res["B6_kawase_sum"]["auc"],

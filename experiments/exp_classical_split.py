@@ -1,5 +1,5 @@
 """
-exp_classical_split.py -- QMI revision item A4 (answers AAAI reviewers R1-W2, R2-W1,
+exp_classical_split.py -- classical split-feature fusion baseline and train-free proxy (answers reviewer points R1-W2, R2-W1,
 R2-Q1, R3-W6 and R3-S1 with one experiment).
 
 Two questions, one run:
