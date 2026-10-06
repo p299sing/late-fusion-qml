@@ -1,0 +1,44 @@
+[
+  {
+    "noise": "depolarizing",
+    "n_cuts": 1,
+    "recon_noise_err": 0.07506820143491204,
+    "recon_noise_std": 0.01336854211001318,
+    "fusion_noise_err": 0.04576037683116896
+  },
+  {
+    "noise": "depolarizing",
+    "n_cuts": 2,
+    "recon_noise_err": 0.07200461643491357,
+    "recon_noise_std": 0.012559881608413571,
+    "fusion_noise_err": 0.04576037683116896
+  },
+  {
+    "noise": "depolarizing",
+    "n_cuts": 3,
+    "recon_noise_err": 0.06985384063163842,
+    "recon_noise_std": 0.017757194440375476,
+    "fusion_noise_err": 0.04576037683116896
+  },
+  {
+    "noise": "fake_manila",
+    "n_cuts": 1,
+    "recon_noise_err": 0.062352006434914786,
+    "recon_noise_std": 0.015180193597903742,
+    "fusion_noise_err": 0.009851997522113165
+  },
+  {
+    "noise": "fake_manila",
+    "n_cuts": 2,
+    "recon_noise_err": 0.0595293539349163,
+    "recon_noise_std": 0.008798484600381774,
+    "fusion_noise_err": 0.009851997522113165
+  },
+  {
+    "noise": "fake_manila",
+    "n_cuts": 3,
+    "recon_noise_err": 0.05564114788164182,
+    "recon_noise_std": 0.019472798233095667,
+    "fusion_noise_err": 0.009851997522113165
+  }
+]

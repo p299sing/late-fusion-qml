@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "How Much Reconstruction Does Quantum Machine Learning Need? Late Fusion of Independently Trained Quantum Subcircuits"
+authors:
+  - family-names: Singh
+    given-names: Prabhjot
+  - family-names: Toosi
+    given-names: Adel N.
+  - family-names: Buyya
+    given-names: Rajkumar
+year: 2026
+repository-code: "https://github.com/p299sing/late-fusion-qml"
+license: MIT

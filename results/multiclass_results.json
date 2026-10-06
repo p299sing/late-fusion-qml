@@ -1,0 +1,72 @@
+[
+  {
+    "dataset": "iris3",
+    "n_classes": 3,
+    "seed": 0,
+    "acc_fusion": 0.9555555555555556,
+    "acc_classical": 0.9777777777777777
+  },
+  {
+    "dataset": "iris3",
+    "n_classes": 3,
+    "seed": 1,
+    "acc_fusion": 0.9333333333333333,
+    "acc_classical": 0.9777777777777777
+  },
+  {
+    "dataset": "iris3",
+    "n_classes": 3,
+    "seed": 2,
+    "acc_fusion": 0.9111111111111111,
+    "acc_classical": 0.9333333333333333
+  },
+  {
+    "dataset": "iris3",
+    "n_classes": 3,
+    "seed": 3,
+    "acc_fusion": 0.9777777777777777,
+    "acc_classical": 0.9777777777777777
+  },
+  {
+    "dataset": "iris3",
+    "n_classes": 3,
+    "seed": 4,
+    "acc_fusion": 0.9777777777777777,
+    "acc_classical": 0.9555555555555556
+  },
+  {
+    "dataset": "mnist012",
+    "n_classes": 3,
+    "seed": 0,
+    "acc_fusion": 0.94,
+    "acc_classical": 0.95
+  },
+  {
+    "dataset": "mnist012",
+    "n_classes": 3,
+    "seed": 1,
+    "acc_fusion": 0.98,
+    "acc_classical": 0.98
+  },
+  {
+    "dataset": "mnist012",
+    "n_classes": 3,
+    "seed": 2,
+    "acc_fusion": 0.95,
+    "acc_classical": 0.98
+  },
+  {
+    "dataset": "mnist012",
+    "n_classes": 3,
+    "seed": 3,
+    "acc_fusion": 0.99,
+    "acc_classical": 0.99
+  },
+  {
+    "dataset": "mnist012",
+    "n_classes": 3,
+    "seed": 4,
+    "acc_fusion": 0.96,
+    "acc_classical": 0.96
+  }
+]

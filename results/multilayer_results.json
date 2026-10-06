@@ -1,0 +1,26 @@
+[
+  {
+    "layers": 1,
+    "cut_entropy": 0.2428292428268354,
+    "fusion_error": 0.12230196324536217,
+    "fusion_error_std": 0.19143585696031098
+  },
+  {
+    "layers": 2,
+    "cut_entropy": 0.37275741866321555,
+    "fusion_error": 0.20070910269712355,
+    "fusion_error_std": 0.1671960909181283
+  },
+  {
+    "layers": 3,
+    "cut_entropy": 0.4311992293762973,
+    "fusion_error": 0.24605439694585005,
+    "fusion_error_std": 0.22251106722209624
+  },
+  {
+    "layers": 4,
+    "cut_entropy": 0.4786979700240569,
+    "fusion_error": 0.2021649814790952,
+    "fusion_error_std": 0.17629112733696164
+  }
+]

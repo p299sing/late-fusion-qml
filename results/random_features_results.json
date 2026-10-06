@@ -1,0 +1,302 @@
+[
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 0,
+    "acc_random_fusion": 0.6714285714285714
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 1,
+    "acc_random_fusion": 0.5142857142857142
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 2,
+    "acc_random_fusion": 0.7857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 3,
+    "acc_random_fusion": 0.6857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 4,
+    "acc_random_fusion": 0.6142857142857143
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 5,
+    "acc_random_fusion": 0.5857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 6,
+    "acc_random_fusion": 0.5571428571428572
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 7,
+    "acc_random_fusion": 0.7285714285714285
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 8,
+    "acc_random_fusion": 0.7285714285714285
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.25,
+    "seed": 9,
+    "acc_random_fusion": 0.5571428571428572
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 0,
+    "acc_random_fusion": 0.6714285714285714
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 1,
+    "acc_random_fusion": 0.5428571428571428
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 2,
+    "acc_random_fusion": 0.6857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 3,
+    "acc_random_fusion": 0.5714285714285714
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 4,
+    "acc_random_fusion": 0.5857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 5,
+    "acc_random_fusion": 0.5714285714285714
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 6,
+    "acc_random_fusion": 0.6142857142857143
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 7,
+    "acc_random_fusion": 0.7428571428571429
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 8,
+    "acc_random_fusion": 0.6142857142857143
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.5,
+    "seed": 9,
+    "acc_random_fusion": 0.5714285714285714
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 0,
+    "acc_random_fusion": 0.5142857142857142
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 1,
+    "acc_random_fusion": 0.5857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 2,
+    "acc_random_fusion": 0.6142857142857143
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 3,
+    "acc_random_fusion": 0.5142857142857142
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 4,
+    "acc_random_fusion": 0.45714285714285713
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 5,
+    "acc_random_fusion": 0.5142857142857142
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 6,
+    "acc_random_fusion": 0.5857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 7,
+    "acc_random_fusion": 0.5857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 8,
+    "acc_random_fusion": 0.5571428571428572
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 0.75,
+    "seed": 9,
+    "acc_random_fusion": 0.5571428571428572
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 0,
+    "acc_random_fusion": 0.5428571428571428
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 1,
+    "acc_random_fusion": 0.4714285714285714
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 2,
+    "acc_random_fusion": 0.6142857142857143
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 3,
+    "acc_random_fusion": 0.44285714285714284
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 4,
+    "acc_random_fusion": 0.5428571428571428
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 5,
+    "acc_random_fusion": 0.5285714285714286
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 6,
+    "acc_random_fusion": 0.4714285714285714
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 7,
+    "acc_random_fusion": 0.4857142857142857
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 8,
+    "acc_random_fusion": 0.5285714285714286
+  },
+  {
+    "task": "alpha_sweep",
+    "alpha": 1.0,
+    "seed": 9,
+    "acc_random_fusion": 0.5142857142857142
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 0,
+    "acc_random_fusion": 0.9181286549707602
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 1,
+    "acc_random_fusion": 0.935672514619883
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 2,
+    "acc_random_fusion": 0.9298245614035088
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 3,
+    "acc_random_fusion": 0.9122807017543859
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 4,
+    "acc_random_fusion": 0.9532163742690059
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 5,
+    "acc_random_fusion": 0.9532163742690059
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 6,
+    "acc_random_fusion": 0.9064327485380117
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 7,
+    "acc_random_fusion": 0.9415204678362573
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 8,
+    "acc_random_fusion": 0.9239766081871345
+  },
+  {
+    "task": "breast_cancer",
+    "alpha": null,
+    "seed": 9,
+    "acc_random_fusion": 0.9064327485380117
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "classical_Z": 0.4583333333333333,
+    "fusion_local": 1.0,
+    "joint_recon": 1.0,
+    "seed": 0
+  },
+  {
+    "classical_Z": 0.49166666666666664,
+    "fusion_local": 1.0,
+    "joint_recon": 1.0,
+    "seed": 1
+  },
+  {
+    "classical_Z": 0.4083333333333333,
+    "fusion_local": 1.0,
+    "joint_recon": 1.0,
+    "seed": 2
+  },
+  {
+    "classical_Z": 0.475,
+    "fusion_local": 1.0,
+    "joint_recon": 1.0,
+    "seed": 3
+  },
+  {
+    "classical_Z": 0.5833333333333334,
+    "fusion_local": 1.0,
+    "joint_recon": 1.0,
+    "seed": 4
+  }
+]

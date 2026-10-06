@@ -1,0 +1,162 @@
+[
+  {
+    "dataset": "fashion_mnist",
+    "seed": 0,
+    "acc_recon": 0.8461538461538461,
+    "acc_fusion": 0.8589743589743589,
+    "acc_kawase": 0.8333333333333334,
+    "acc_classical": 0.8461538461538461
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 1,
+    "acc_recon": 0.8589743589743589,
+    "acc_fusion": 0.8717948717948718,
+    "acc_kawase": 0.8333333333333334,
+    "acc_classical": 0.8461538461538461
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 2,
+    "acc_recon": 0.7051282051282052,
+    "acc_fusion": 0.6923076923076923,
+    "acc_kawase": 0.7435897435897436,
+    "acc_classical": 0.7564102564102564
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 3,
+    "acc_recon": 0.8205128205128205,
+    "acc_fusion": 0.7948717948717948,
+    "acc_kawase": 0.7948717948717948,
+    "acc_classical": 0.8461538461538461
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 4,
+    "acc_recon": 0.7435897435897436,
+    "acc_fusion": 0.7564102564102564,
+    "acc_kawase": 0.7692307692307693,
+    "acc_classical": 0.7564102564102564
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 5,
+    "acc_recon": 0.782051282051282,
+    "acc_fusion": 0.7948717948717948,
+    "acc_kawase": 0.7692307692307693,
+    "acc_classical": 0.7564102564102564
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 6,
+    "acc_recon": 0.7435897435897436,
+    "acc_fusion": 0.7692307692307693,
+    "acc_kawase": 0.782051282051282,
+    "acc_classical": 0.7435897435897436
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 7,
+    "acc_recon": 0.7948717948717948,
+    "acc_fusion": 0.782051282051282,
+    "acc_kawase": 0.8205128205128205,
+    "acc_classical": 0.782051282051282
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 8,
+    "acc_recon": 0.8461538461538461,
+    "acc_fusion": 0.7692307692307693,
+    "acc_kawase": 0.8333333333333334,
+    "acc_classical": 0.782051282051282
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 9,
+    "acc_recon": 0.8205128205128205,
+    "acc_fusion": 0.7692307692307693,
+    "acc_kawase": 0.7948717948717948,
+    "acc_classical": 0.7948717948717948
+  },
+  {
+    "dataset": "mnist",
+    "seed": 0,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9871794871794872,
+    "acc_classical": 1.0
+  },
+  {
+    "dataset": "mnist",
+    "seed": 1,
+    "acc_recon": 1.0,
+    "acc_fusion": 1.0,
+    "acc_kawase": 1.0,
+    "acc_classical": 1.0
+  },
+  {
+    "dataset": "mnist",
+    "seed": 2,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9743589743589743,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 3,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 1.0,
+    "acc_kawase": 0.9615384615384616,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 4,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 0.9743589743589743,
+    "acc_kawase": 0.9871794871794872,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 5,
+    "acc_recon": 0.9615384615384616,
+    "acc_fusion": 0.9743589743589743,
+    "acc_kawase": 0.9743589743589743,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 6,
+    "acc_recon": 1.0,
+    "acc_fusion": 1.0,
+    "acc_kawase": 0.9871794871794872,
+    "acc_classical": 1.0
+  },
+  {
+    "dataset": "mnist",
+    "seed": 7,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9743589743589743,
+    "acc_classical": 0.9743589743589743
+  },
+  {
+    "dataset": "mnist",
+    "seed": 8,
+    "acc_recon": 1.0,
+    "acc_fusion": 1.0,
+    "acc_kawase": 1.0,
+    "acc_classical": 1.0
+  },
+  {
+    "dataset": "mnist",
+    "seed": 9,
+    "acc_recon": 0.9487179487179487,
+    "acc_fusion": 0.9615384615384616,
+    "acc_kawase": 0.9615384615384616,
+    "acc_classical": 0.9743589743589743
+  }
+]

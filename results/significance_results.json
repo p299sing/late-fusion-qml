@@ -1,0 +1,580 @@
+[
+  {
+    "comparison": "bench/moons: fusion - B0",
+    "n_pairs": 10,
+    "mean_gap": 0.0022222222222222144,
+    "ci95": [
+      -0.02777777777777779,
+      0.03777777777777778
+    ],
+    "ci90": [
+      -0.023333333333333352,
+      0.03111111111111111
+    ],
+    "wilcoxon_p": 0.7578125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "inconclusive"
+  },
+  {
+    "comparison": "bench/moons: fusion - Kawase",
+    "n_pairs": 10,
+    "mean_gap": 0.06666666666666665,
+    "ci95": [
+      0.028888888888888863,
+      0.10333333333333335
+    ],
+    "ci90": [
+      0.03555555555555552,
+      0.09888888888888887
+    ],
+    "wilcoxon_p": 0.01953125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "bench/circles: fusion - B0",
+    "n_pairs": 10,
+    "mean_gap": -0.00888888888888888,
+    "ci95": [
+      -0.015555555555555545,
+      -0.0033333333333333327
+    ],
+    "ci90": [
+      -0.014444444444444426,
+      -0.004444444444444429
+    ],
+    "wilcoxon_p": 0.03125,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent (small significant offset)"
+  },
+  {
+    "comparison": "bench/circles: fusion - Kawase",
+    "n_pairs": 10,
+    "mean_gap": -0.0022222222222222144,
+    "ci95": [
+      -0.006666666666666643,
+      0.0033333333333333214
+    ],
+    "ci90": [
+      -0.006666666666666643,
+      0.0022222222222222144
+    ],
+    "wilcoxon_p": 0.6875,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "bench/iris: fusion - B0",
+    "n_pairs": 10,
+    "mean_gap": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "ci90": [
+      0.0,
+      0.0
+    ],
+    "wilcoxon_p": 1.0,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "bench/iris: fusion - Kawase",
+    "n_pairs": 10,
+    "mean_gap": 0.06333333333333332,
+    "ci95": [
+      0.0,
+      0.15666666666666668
+    ],
+    "ci90": [
+      0.0,
+      0.1433333333333333
+    ],
+    "wilcoxon_p": 0.5,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "inconclusive"
+  },
+  {
+    "comparison": "bench/breast_cancer: fusion - B0",
+    "n_pairs": 10,
+    "mean_gap": -0.00643274853801169,
+    "ci95": [
+      -0.014619883040935644,
+      0.0005847953216374213
+    ],
+    "ci90": [
+      -0.01286549707602338,
+      -0.0005847953216373992
+    ],
+    "wilcoxon_p": 0.1875,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "bench/breast_cancer: fusion - Kawase",
+    "n_pairs": 10,
+    "mean_gap": 0.2619883040935672,
+    "ci95": [
+      0.2245614035087719,
+      0.2964912280701754
+    ],
+    "ci90": [
+      0.23154970760233912,
+      0.29181286549707597
+    ],
+    "wilcoxon_p": 0.001953125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "independent/alpha=0.25: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": 0.005714285714285727,
+    "ci95": [
+      -0.015714285714285715,
+      0.02428571428571431
+    ],
+    "ci90": [
+      -0.012857142857142834,
+      0.021428571428571463
+    ],
+    "wilcoxon_p": 0.53125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "inconclusive"
+  },
+  {
+    "comparison": "independent/alpha=0.5: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": 0.015714285714285726,
+    "ci95": [
+      -0.002857142857142858,
+      0.03571428571428574
+    ],
+    "ci90": [
+      -1.1102230246251566e-17,
+      0.032857142857142876
+    ],
+    "wilcoxon_p": 0.25,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "inconclusive"
+  },
+  {
+    "comparison": "independent/alpha=0.75: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": -0.008571428571428574,
+    "ci95": [
+      -0.030000000000000027,
+      0.011428571428571455
+    ],
+    "ci90": [
+      -0.025714285714285755,
+      0.008571428571428586
+    ],
+    "wilcoxon_p": 0.58984375,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "inconclusive"
+  },
+  {
+    "comparison": "independent/alpha=1.0: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": -0.037142857142857144,
+    "ci95": [
+      -0.05714285714285714,
+      -0.018571428571428582
+    ],
+    "ci90": [
+      -0.05428571428571427,
+      -0.02142857142857143
+    ],
+    "wilcoxon_p": 0.0078125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "deficit"
+  },
+  {
+    "comparison": "independent/pooled: fusion - reconstruction",
+    "n_pairs": 40,
+    "mean_gap": -0.006071428571428566,
+    "ci95": [
+      -0.017857142857142863,
+      0.0053571428571428745
+    ],
+    "ci90": [
+      -0.016071428571428566,
+      0.0035714285714285865
+    ],
+    "wilcoxon_p": 0.4395677467571575,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "faithful/fashion_mnist: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": 1.1102230246251566e-17,
+    "ci95": [
+      -0.011538461538461543,
+      0.011538461538461543
+    ],
+    "ci90": [
+      -0.01025641025641023,
+      0.010256410256410253
+    ],
+    "wilcoxon_p": 1.0,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "faithful/fashion_mnist: fusion - Kawase",
+    "n_pairs": 10,
+    "mean_gap": 0.008974358974358965,
+    "ci95": [
+      -0.003846153846153866,
+      0.02307692307692307
+    ],
+    "ci90": [
+      -0.002564102564102577,
+      0.020512820512820516
+    ],
+    "wilcoxon_p": 0.484375,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "inconclusive"
+  },
+  {
+    "comparison": "faithful/fashion_mnist: fusion - classical",
+    "n_pairs": 10,
+    "mean_gap": 0.0012820512820512886,
+    "ci95": [
+      -0.016666666666666653,
+      0.01794871794871796
+    ],
+    "ci90": [
+      -0.014102564102564085,
+      0.015384615384615396
+    ],
+    "wilcoxon_p": 0.859375,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "faithful/mnist: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": 0.0012820512820512886,
+    "ci95": [
+      -0.003846153846153866,
+      0.006410256410256432
+    ],
+    "ci90": [
+      -0.0038461538461538438,
+      0.006410256410256399
+    ],
+    "wilcoxon_p": 0.8125,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "faithful/mnist: fusion - Kawase",
+    "n_pairs": 10,
+    "mean_gap": 0.007692307692307709,
+    "ci95": [
+      0.002564102564102577,
+      0.012820512820512853
+    ],
+    "ci90": [
+      0.0038461538461538438,
+      0.01282051282051283
+    ],
+    "wilcoxon_p": 0.0625,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent (small significant offset)"
+  },
+  {
+    "comparison": "faithful/mnist: fusion - classical",
+    "n_pairs": 10,
+    "mean_gap": -0.0012820512820512775,
+    "ci95": [
+      -0.0076923076923076875,
+      0.0051282051282051325
+    ],
+    "ci90": [
+      -0.0064102564102564204,
+      0.0038461538461538546
+    ],
+    "wilcoxon_p": 0.984375,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "faithful/synthetic_a0.75: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": -0.023611111111111104,
+    "ci95": [
+      -0.043055555555555555,
+      -0.002777777777777779
+    ],
+    "ci90": [
+      -0.04027777777777778,
+      -0.00555555555555558
+    ],
+    "wilcoxon_p": 0.0625,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "deficit"
+  },
+  {
+    "comparison": "faithful/synthetic_a0.75: fusion - Kawase",
+    "n_pairs": 10,
+    "mean_gap": 0.34305555555555556,
+    "ci95": [
+      0.2763888888888889,
+      0.4097222222222222
+    ],
+    "ci90": [
+      0.2861111111111111,
+      0.4
+    ],
+    "wilcoxon_p": 0.001953125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "faithful/synthetic_a0.75: fusion - classical",
+    "n_pairs": 10,
+    "mean_gap": -0.03333333333333331,
+    "ci95": [
+      -0.055555555555555525,
+      -0.00972222222222221
+    ],
+    "ci90": [
+      -0.05138888888888887,
+      -0.013888888888888873
+    ],
+    "wilcoxon_p": 0.037109375,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "deficit"
+  },
+  {
+    "comparison": "faithful-PCA8/fashion_mnist: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": -0.010256410256410253,
+    "ci95": [
+      -0.029487179487179493,
+      0.0076923076923076875
+    ],
+    "ci90": [
+      -0.026923076923076918,
+      0.00512820512820511
+    ],
+    "wilcoxon_p": 0.5234375,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "inconclusive"
+  },
+  {
+    "comparison": "faithful-PCA8/mnist: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": 0.002564102564102555,
+    "ci95": [
+      -0.002564102564102577,
+      0.007692307692307676
+    ],
+    "ci90": [
+      -0.0012820512820512996,
+      0.00641025641025641
+    ],
+    "wilcoxon_p": 0.75,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  },
+  {
+    "comparison": "shots=32: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": 0.1924171539961012,
+    "ci95": [
+      0.17524366471734876,
+      0.20935769980506813
+    ],
+    "ci90": [
+      0.17820662768031173,
+      0.20668713450292384
+    ],
+    "wilcoxon_p": 0.001953125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "shots=100: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": 0.1572514619883042,
+    "ci95": [
+      0.1442300194931775,
+      0.17134551656920094
+    ],
+    "ci90": [
+      0.1461793372319689,
+      0.16885087719298258
+    ],
+    "wilcoxon_p": 0.001953125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "shots=1000: fusion - reconstruction",
+    "n_pairs": 10,
+    "mean_gap": 0.028791423001949167,
+    "ci95": [
+      0.021871345029239604,
+      0.03506822612085747
+    ],
+    "ci90": [
+      0.023000974658869227,
+      0.03423001949317724
+    ],
+    "wilcoxon_p": 0.001953125,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "marshall/T=1 (pooled alpha): Qdial - Marshall",
+    "n_pairs": 40,
+    "mean_gap": 0.042083333333333334,
+    "ci95": [
+      0.017083333333333346,
+      0.07166666666666668
+    ],
+    "ci90": [
+      0.02020833333333335,
+      0.06666666666666667
+    ],
+    "wilcoxon_p": 0.000416814122431899,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "marshall/T=2 (pooled alpha): Qdial - Marshall",
+    "n_pairs": 40,
+    "mean_gap": 0.04312500000000001,
+    "ci95": [
+      0.01937500000000001,
+      0.07333333333333335
+    ],
+    "ci90": [
+      0.02208333333333335,
+      0.06812500000000002
+    ],
+    "wilcoxon_p": 0.00025547156814115083,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "marshall/T=4 (pooled alpha): Qdial - Marshall",
+    "n_pairs": 40,
+    "mean_gap": 0.030624999999999993,
+    "ci95": [
+      0.009999999999999998,
+      0.05750000000000001
+    ],
+    "ci90": [
+      0.012499999999999994,
+      0.05249999999999999
+    ],
+    "wilcoxon_p": 0.0036896586694423685,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "advantage"
+  },
+  {
+    "comparison": "marshall/T=8 (pooled alpha): Qdial - Marshall",
+    "n_pairs": 40,
+    "mean_gap": 0.009583333333333329,
+    "ci95": [
+      2.7061686225238823e-18,
+      0.01958333333333332
+    ],
+    "ci90": [
+      0.0016666666666666635,
+      0.017916666666666657
+    ],
+    "wilcoxon_p": 0.058850352996257016,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent (small significant offset)"
+  },
+  {
+    "comparison": "marshall/T=16 (pooled alpha): Qdial - Marshall",
+    "n_pairs": 40,
+    "mean_gap": 0.012083333333333324,
+    "ci95": [
+      0.0033333333333333214,
+      0.02104166666666666
+    ],
+    "ci90": [
+      0.004583333333333337,
+      0.01958333333333334
+    ],
+    "wilcoxon_p": 0.014821179240252762,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent (small significant offset)"
+  },
+  {
+    "comparison": "multiclass/iris3: fusion - classical",
+    "n_pairs": 5,
+    "mean_gap": -0.01333333333333333,
+    "ci95": [
+      -0.03111111111111109,
+      0.008888888888888835
+    ],
+    "ci90": [
+      -0.03111111111111107,
+      0.004444444444444406
+    ],
+    "wilcoxon_p": 0.375,
+    "delta": 0.02,
+    "tost_equivalent": false,
+    "verdict": "inconclusive"
+  },
+  {
+    "comparison": "multiclass/mnist012: fusion - classical",
+    "n_pairs": 5,
+    "mean_gap": -0.008000000000000007,
+    "ci95": [
+      -0.020000000000000018,
+      0.0
+    ],
+    "ci90": [
+      -0.018000000000000016,
+      0.0
+    ],
+    "wilcoxon_p": 0.5,
+    "delta": 0.02,
+    "tost_equivalent": true,
+    "verdict": "equivalent"
+  }
+]

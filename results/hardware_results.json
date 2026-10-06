@@ -1,0 +1,112 @@
+[
+  {
+    "backend": "ibm_fez",
+    "k": 1,
+    "instance": 0,
+    "shots": 4000,
+    "n_subexperiments": 12,
+    "qpd_overhead": 9.0,
+    "err_recon": 0.021953472981184316,
+    "err_fusion": 0.03607083277098115,
+    "ratio": 0.6086211848939014
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 2,
+    "instance": 0,
+    "shots": 4000,
+    "n_subexperiments": 72,
+    "qpd_overhead": 81.0,
+    "err_recon": 0.026700570429948146,
+    "err_fusion": 0.015538860502970847,
+    "ratio": 1.7183094233224703
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 1,
+    "instance": 1,
+    "shots": 4000,
+    "n_subexperiments": 12,
+    "qpd_overhead": 9.0,
+    "err_recon": 0.044056520273380174,
+    "err_fusion": 0.011507053885367068,
+    "ratio": 3.828653338401813
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 2,
+    "instance": 1,
+    "shots": 4000,
+    "n_subexperiments": 72,
+    "qpd_overhead": 81.0,
+    "err_recon": 0.007757335622016328,
+    "err_fusion": 0.016882621462235032,
+    "ratio": 0.45948643931683353
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 1,
+    "instance": 2,
+    "shots": 4000,
+    "n_subexperiments": 12,
+    "qpd_overhead": 9.0,
+    "err_recon": 0.0221802147330896,
+    "err_fusion": 0.012349006434647286,
+    "ratio": 1.7961133027560134
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 2,
+    "instance": 2,
+    "shots": 4000,
+    "n_subexperiments": 72,
+    "qpd_overhead": 81.0,
+    "err_recon": 0.017864666168470586,
+    "err_fusion": 0.020922937410706062,
+    "ratio": 0.8538316498203264
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 1,
+    "instance": 3,
+    "shots": 4000,
+    "n_subexperiments": 12,
+    "qpd_overhead": 9.0,
+    "err_recon": 0.023412407242565332,
+    "err_fusion": 0.0040182448826160955,
+    "ratio": 5.826525741089872
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 2,
+    "instance": 3,
+    "shots": 4000,
+    "n_subexperiments": 72,
+    "qpd_overhead": 81.0,
+    "err_recon": 0.02165618822844449,
+    "err_fusion": 0.03307857391899596,
+    "ratio": 0.654689294691995
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 1,
+    "instance": 4,
+    "shots": 4000,
+    "n_subexperiments": 12,
+    "qpd_overhead": 9.0,
+    "err_recon": 0.03539710853059564,
+    "err_fusion": 0.01860298874363448,
+    "ratio": 1.9027646051072156
+  },
+  {
+    "backend": "ibm_fez",
+    "k": 2,
+    "instance": 4,
+    "shots": 4000,
+    "n_subexperiments": 72,
+    "qpd_overhead": 81.0,
+    "err_recon": 0.01298568721781667,
+    "err_fusion": 0.01535022858745411,
+    "ratio": 0.8459605108701768
+  }
+]

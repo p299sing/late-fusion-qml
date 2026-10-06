@@ -1,0 +1,642 @@
+[
+  {
+    "seed": 0,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.996702050546378,
+    "acc_recon": 0.5524366471734893,
+    "acc_fusion": 0.8191033138401559
+  },
+  {
+    "seed": 0,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.996702050546378,
+    "acc_recon": 0.5949317738791422,
+    "acc_fusion": 0.8968810916179338
+  },
+  {
+    "seed": 0,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.996702050546378,
+    "acc_recon": 0.6647173489278754,
+    "acc_fusion": 0.9235867446393763
+  },
+  {
+    "seed": 0,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.996702050546378,
+    "acc_recon": 0.7569200779727095,
+    "acc_fusion": 0.9311890838206629
+  },
+  {
+    "seed": 0,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.996702050546378,
+    "acc_recon": 0.8489278752436645,
+    "acc_fusion": 0.9329434697855749
+  },
+  {
+    "seed": 0,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.996702050546378,
+    "acc_recon": 0.8968810916179338,
+    "acc_fusion": 0.9346978557504874
+  },
+  {
+    "seed": 0,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.996702050546378,
+    "acc_recon": 0.9183235867446397,
+    "acc_fusion": 0.9348927875243663
+  },
+  {
+    "seed": 0,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.996702050546378,
+    "acc_recon": 0.9302144249512673,
+    "acc_fusion": 0.934502923976608
+  },
+  {
+    "seed": 1,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.995562367760362,
+    "acc_recon": 0.548148148148148,
+    "acc_fusion": 0.8345029239766081
+  },
+  {
+    "seed": 1,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.995562367760362,
+    "acc_recon": 0.5896686159844055,
+    "acc_fusion": 0.9023391812865498
+  },
+  {
+    "seed": 1,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.995562367760362,
+    "acc_recon": 0.6606237816764133,
+    "acc_fusion": 0.9269005847953218
+  },
+  {
+    "seed": 1,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.995562367760362,
+    "acc_recon": 0.7600389863547758,
+    "acc_fusion": 0.9337231968810914
+  },
+  {
+    "seed": 1,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.995562367760362,
+    "acc_recon": 0.8514619883040934,
+    "acc_fusion": 0.9360623781676412
+  },
+  {
+    "seed": 1,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.995562367760362,
+    "acc_recon": 0.9083820662768034,
+    "acc_fusion": 0.9356725146198829
+  },
+  {
+    "seed": 1,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.995562367760362,
+    "acc_recon": 0.9284600389863549,
+    "acc_fusion": 0.937231968810916
+  },
+  {
+    "seed": 1,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.995562367760362,
+    "acc_recon": 0.936062378167641,
+    "acc_fusion": 0.93859649122807
+  },
+  {
+    "seed": 2,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.999910925010546,
+    "acc_recon": 0.5693957115009746,
+    "acc_fusion": 0.8116959064327484
+  },
+  {
+    "seed": 2,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.999910925010546,
+    "acc_recon": 0.610916179337232,
+    "acc_fusion": 0.8849902534113061
+  },
+  {
+    "seed": 2,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.999910925010546,
+    "acc_recon": 0.6801169590643276,
+    "acc_fusion": 0.9196881091617936
+  },
+  {
+    "seed": 2,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.999910925010546,
+    "acc_recon": 0.7682261208576998,
+    "acc_fusion": 0.9317738791423003
+  },
+  {
+    "seed": 2,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.999910925010546,
+    "acc_recon": 0.858869395711501,
+    "acc_fusion": 0.9335282651072123
+  },
+  {
+    "seed": 2,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.999910925010546,
+    "acc_recon": 0.9128654970760234,
+    "acc_fusion": 0.9309941520467836
+  },
+  {
+    "seed": 2,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.999910925010546,
+    "acc_recon": 0.9362573099415203,
+    "acc_fusion": 0.9290448343079921
+  },
+  {
+    "seed": 2,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.999910925010546,
+    "acc_recon": 0.9415204678362572,
+    "acc_fusion": 0.9274853801169594
+  },
+  {
+    "seed": 3,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.999592383679027,
+    "acc_recon": 0.569980506822612,
+    "acc_fusion": 0.8682261208576999
+  },
+  {
+    "seed": 3,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.999592383679027,
+    "acc_recon": 0.6157894736842106,
+    "acc_fusion": 0.9126705653021443
+  },
+  {
+    "seed": 3,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.999592383679027,
+    "acc_recon": 0.6879142300194933,
+    "acc_fusion": 0.9315789473684212
+  },
+  {
+    "seed": 3,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.999592383679027,
+    "acc_recon": 0.7816764132553607,
+    "acc_fusion": 0.9350877192982455
+  },
+  {
+    "seed": 3,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.999592383679027,
+    "acc_recon": 0.8615984405458088,
+    "acc_fusion": 0.9343079922027289
+  },
+  {
+    "seed": 3,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.999592383679027,
+    "acc_recon": 0.9035087719298248,
+    "acc_fusion": 0.9352826510721244
+  },
+  {
+    "seed": 3,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.999592383679027,
+    "acc_recon": 0.9192982456140354,
+    "acc_fusion": 0.9356725146198827
+  },
+  {
+    "seed": 3,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.999592383679027,
+    "acc_recon": 0.9321637426900584,
+    "acc_fusion": 0.9356725146198827
+  },
+  {
+    "seed": 4,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.912567652245627,
+    "acc_recon": 0.5426900584795322,
+    "acc_fusion": 0.8510721247563351
+  },
+  {
+    "seed": 4,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.912567652245627,
+    "acc_recon": 0.5746588693957116,
+    "acc_fusion": 0.9103313840155948
+  },
+  {
+    "seed": 4,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.912567652245627,
+    "acc_recon": 0.6374269005847953,
+    "acc_fusion": 0.9259259259259262
+  },
+  {
+    "seed": 4,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.912567652245627,
+    "acc_recon": 0.7313840155945418,
+    "acc_fusion": 0.9288499025341133
+  },
+  {
+    "seed": 4,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.912567652245627,
+    "acc_recon": 0.8313840155945419,
+    "acc_fusion": 0.928265107212476
+  },
+  {
+    "seed": 4,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.912567652245627,
+    "acc_recon": 0.9056530214424952,
+    "acc_fusion": 0.9286549707602343
+  },
+  {
+    "seed": 4,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.912567652245627,
+    "acc_recon": 0.9450292397660819,
+    "acc_fusion": 0.9288499025341134
+  },
+  {
+    "seed": 4,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.912567652245627,
+    "acc_recon": 0.9563352826510718,
+    "acc_fusion": 0.9294346978557508
+  },
+  {
+    "seed": 5,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.149923551587804,
+    "acc_recon": 0.5756335282651072,
+    "acc_fusion": 0.8900584795321637
+  },
+  {
+    "seed": 5,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.149923551587804,
+    "acc_recon": 0.6247563352826512,
+    "acc_fusion": 0.9311890838206627
+  },
+  {
+    "seed": 5,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.149923551587804,
+    "acc_recon": 0.6986354775828459,
+    "acc_fusion": 0.9428849902534111
+  },
+  {
+    "seed": 5,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.149923551587804,
+    "acc_recon": 0.7920077972709552,
+    "acc_fusion": 0.9436647173489274
+  },
+  {
+    "seed": 5,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.149923551587804,
+    "acc_recon": 0.8799220272904482,
+    "acc_fusion": 0.9458089668615981
+  },
+  {
+    "seed": 5,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.149923551587804,
+    "acc_recon": 0.9290448343079921,
+    "acc_fusion": 0.9465886939571146
+  },
+  {
+    "seed": 5,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.149923551587804,
+    "acc_recon": 0.9487329434697853,
+    "acc_fusion": 0.9471734892787521
+  },
+  {
+    "seed": 5,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.149923551587804,
+    "acc_recon": 0.9536062378167638,
+    "acc_fusion": 0.9473684210526313
+  },
+  {
+    "seed": 6,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.998968488100705,
+    "acc_recon": 0.5588693957115011,
+    "acc_fusion": 0.8594541910331382
+  },
+  {
+    "seed": 6,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.998968488100705,
+    "acc_recon": 0.6011695906432748,
+    "acc_fusion": 0.9095516569200781
+  },
+  {
+    "seed": 6,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.998968488100705,
+    "acc_recon": 0.671345029239766,
+    "acc_fusion": 0.9274853801169591
+  },
+  {
+    "seed": 6,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.998968488100705,
+    "acc_recon": 0.7678362573099414,
+    "acc_fusion": 0.9319688109161793
+  },
+  {
+    "seed": 6,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.998968488100705,
+    "acc_recon": 0.8534113060428848,
+    "acc_fusion": 0.9325536062378169
+  },
+  {
+    "seed": 6,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.998968488100705,
+    "acc_recon": 0.9001949317738792,
+    "acc_fusion": 0.9313840155945422
+  },
+  {
+    "seed": 6,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.998968488100705,
+    "acc_recon": 0.92280701754386,
+    "acc_fusion": 0.9300194931773883
+  },
+  {
+    "seed": 6,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.998968488100705,
+    "acc_recon": 0.92729044834308,
+    "acc_fusion": 0.9300194931773883
+  },
+  {
+    "seed": 7,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.996758622833203,
+    "acc_recon": 0.556335282651072,
+    "acc_fusion": 0.8945419103313841
+  },
+  {
+    "seed": 7,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.996758622833203,
+    "acc_recon": 0.6001949317738792,
+    "acc_fusion": 0.9356725146198829
+  },
+  {
+    "seed": 7,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.996758622833203,
+    "acc_recon": 0.671345029239766,
+    "acc_fusion": 0.9502923976608185
+  },
+  {
+    "seed": 7,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.996758622833203,
+    "acc_recon": 0.7670565302144249,
+    "acc_fusion": 0.9536062378167639
+  },
+  {
+    "seed": 7,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.996758622833203,
+    "acc_recon": 0.868421052631579,
+    "acc_fusion": 0.9539961013645221
+  },
+  {
+    "seed": 7,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.996758622833203,
+    "acc_recon": 0.9288499025341131,
+    "acc_fusion": 0.9536062378167638
+  },
+  {
+    "seed": 7,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.996758622833203,
+    "acc_recon": 0.9495126705653019,
+    "acc_fusion": 0.9532163742690056
+  },
+  {
+    "seed": 7,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.996758622833203,
+    "acc_recon": 0.952436647173489,
+    "acc_fusion": 0.9532163742690056
+  },
+  {
+    "seed": 8,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.577431452110975,
+    "acc_recon": 0.5565302144249513,
+    "acc_fusion": 0.8516569200779727
+  },
+  {
+    "seed": 8,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.577431452110975,
+    "acc_recon": 0.6038986354775828,
+    "acc_fusion": 0.8933723196881094
+  },
+  {
+    "seed": 8,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.577431452110975,
+    "acc_recon": 0.6805068226120857,
+    "acc_fusion": 0.9064327485380119
+  },
+  {
+    "seed": 8,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.577431452110975,
+    "acc_recon": 0.774074074074074,
+    "acc_fusion": 0.9116959064327487
+  },
+  {
+    "seed": 8,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.577431452110975,
+    "acc_recon": 0.8588693957115009,
+    "acc_fusion": 0.9140350877192984
+  },
+  {
+    "seed": 8,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.577431452110975,
+    "acc_recon": 0.903898635477583,
+    "acc_fusion": 0.9169590643274856
+  },
+  {
+    "seed": 8,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.577431452110975,
+    "acc_recon": 0.9198830409356726,
+    "acc_fusion": 0.9183235867446397
+  },
+  {
+    "seed": 8,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.577431452110975,
+    "acc_recon": 0.9214424951267058,
+    "acc_fusion": 0.9181286549707605
+  },
+  {
+    "seed": 9,
+    "total_budget": 64,
+    "n_subexp": 16,
+    "gamma_total": 7.9995823514855875,
+    "acc_recon": 0.5598440545808967,
+    "acc_fusion": 0.8128654970760233
+  },
+  {
+    "seed": 9,
+    "total_budget": 200,
+    "n_subexp": 16,
+    "gamma_total": 7.9995823514855875,
+    "acc_recon": 0.6005847953216374,
+    "acc_fusion": 0.8727095516569201
+  },
+  {
+    "seed": 9,
+    "total_budget": 640,
+    "n_subexp": 16,
+    "gamma_total": 7.9995823514855875,
+    "acc_recon": 0.6754385964912281,
+    "acc_fusion": 0.900974658869396
+  },
+  {
+    "seed": 9,
+    "total_budget": 2000,
+    "n_subexp": 16,
+    "gamma_total": 7.9995823514855875,
+    "acc_recon": 0.7693957115009747,
+    "acc_fusion": 0.9091617933723198
+  },
+  {
+    "seed": 9,
+    "total_budget": 6400,
+    "n_subexp": 16,
+    "gamma_total": 7.9995823514855875,
+    "acc_recon": 0.8619883040935673,
+    "acc_fusion": 0.9085769980506825
+  },
+  {
+    "seed": 9,
+    "total_budget": 20000,
+    "n_subexp": 16,
+    "gamma_total": 7.9995823514855875,
+    "acc_recon": 0.9064327485380119,
+    "acc_fusion": 0.9076023391812867
+  },
+  {
+    "seed": 9,
+    "total_budget": 64000,
+    "n_subexp": 16,
+    "gamma_total": 7.9995823514855875,
+    "acc_recon": 0.9231968810916181,
+    "acc_fusion": 0.9068226120857702
+  },
+  {
+    "seed": 9,
+    "total_budget": 200000,
+    "n_subexp": 16,
+    "gamma_total": 7.9995823514855875,
+    "acc_recon": 0.9329434697855749,
+    "acc_fusion": 0.9064327485380119
+  }
+]

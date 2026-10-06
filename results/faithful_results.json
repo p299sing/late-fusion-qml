@@ -1,0 +1,242 @@
+[
+  {
+    "dataset": "fashion_mnist",
+    "seed": 0,
+    "acc_recon": 0.8717948717948718,
+    "acc_fusion": 0.8461538461538461,
+    "acc_kawase": 0.8589743589743589,
+    "acc_classical": 0.8461538461538461
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 1,
+    "acc_recon": 0.8846153846153846,
+    "acc_fusion": 0.8846153846153846,
+    "acc_kawase": 0.8974358974358975,
+    "acc_classical": 0.8589743589743589
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 2,
+    "acc_recon": 0.6923076923076923,
+    "acc_fusion": 0.6923076923076923,
+    "acc_kawase": 0.6794871794871795,
+    "acc_classical": 0.7307692307692307
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 3,
+    "acc_recon": 0.782051282051282,
+    "acc_fusion": 0.782051282051282,
+    "acc_kawase": 0.782051282051282,
+    "acc_classical": 0.8205128205128205
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 4,
+    "acc_recon": 0.7948717948717948,
+    "acc_fusion": 0.7692307692307693,
+    "acc_kawase": 0.7435897435897436,
+    "acc_classical": 0.7692307692307693
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 5,
+    "acc_recon": 0.7692307692307693,
+    "acc_fusion": 0.782051282051282,
+    "acc_kawase": 0.7948717948717948,
+    "acc_classical": 0.8205128205128205
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 6,
+    "acc_recon": 0.782051282051282,
+    "acc_fusion": 0.7564102564102564,
+    "acc_kawase": 0.7692307692307693,
+    "acc_classical": 0.7307692307692307
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 7,
+    "acc_recon": 0.7948717948717948,
+    "acc_fusion": 0.8205128205128205,
+    "acc_kawase": 0.8076923076923077,
+    "acc_classical": 0.782051282051282
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 8,
+    "acc_recon": 0.8205128205128205,
+    "acc_fusion": 0.8333333333333334,
+    "acc_kawase": 0.782051282051282,
+    "acc_classical": 0.8076923076923077
+  },
+  {
+    "dataset": "fashion_mnist",
+    "seed": 9,
+    "acc_recon": 0.7948717948717948,
+    "acc_fusion": 0.8205128205128205,
+    "acc_kawase": 0.782051282051282,
+    "acc_classical": 0.8076923076923077
+  },
+  {
+    "dataset": "mnist",
+    "seed": 0,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9743589743589743,
+    "acc_classical": 1.0
+  },
+  {
+    "dataset": "mnist",
+    "seed": 1,
+    "acc_recon": 1.0,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9871794871794872,
+    "acc_classical": 1.0
+  },
+  {
+    "dataset": "mnist",
+    "seed": 2,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 1.0,
+    "acc_kawase": 0.9871794871794872,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 3,
+    "acc_recon": 0.9743589743589743,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9743589743589743,
+    "acc_classical": 1.0
+  },
+  {
+    "dataset": "mnist",
+    "seed": 4,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 0.9743589743589743,
+    "acc_kawase": 0.9743589743589743,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 5,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9871794871794872,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 6,
+    "acc_recon": 1.0,
+    "acc_fusion": 1.0,
+    "acc_kawase": 0.9743589743589743,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 7,
+    "acc_recon": 0.9871794871794872,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9743589743589743,
+    "acc_classical": 0.9871794871794872
+  },
+  {
+    "dataset": "mnist",
+    "seed": 8,
+    "acc_recon": 1.0,
+    "acc_fusion": 1.0,
+    "acc_kawase": 1.0,
+    "acc_classical": 1.0
+  },
+  {
+    "dataset": "mnist",
+    "seed": 9,
+    "acc_recon": 0.9743589743589743,
+    "acc_fusion": 0.9871794871794872,
+    "acc_kawase": 0.9871794871794872,
+    "acc_classical": 0.9743589743589743
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 0,
+    "acc_recon": 0.8888888888888888,
+    "acc_fusion": 0.8472222222222222,
+    "acc_kawase": 0.6388888888888888,
+    "acc_classical": 0.9166666666666666
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 1,
+    "acc_recon": 0.9722222222222222,
+    "acc_fusion": 0.9305555555555556,
+    "acc_kawase": 0.4027777777777778,
+    "acc_classical": 0.9444444444444444
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 2,
+    "acc_recon": 0.9305555555555556,
+    "acc_fusion": 0.9305555555555556,
+    "acc_kawase": 0.4305555555555556,
+    "acc_classical": 0.9722222222222222
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 3,
+    "acc_recon": 0.9305555555555556,
+    "acc_fusion": 0.8611111111111112,
+    "acc_kawase": 0.6805555555555556,
+    "acc_classical": 0.9444444444444444
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 4,
+    "acc_recon": 0.9027777777777778,
+    "acc_fusion": 0.9305555555555556,
+    "acc_kawase": 0.6111111111111112,
+    "acc_classical": 0.9027777777777778
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 5,
+    "acc_recon": 0.9166666666666666,
+    "acc_fusion": 0.9305555555555556,
+    "acc_kawase": 0.5833333333333334,
+    "acc_classical": 0.9027777777777778
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 6,
+    "acc_recon": 0.9305555555555556,
+    "acc_fusion": 0.9444444444444444,
+    "acc_kawase": 0.5555555555555556,
+    "acc_classical": 0.9722222222222222
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 7,
+    "acc_recon": 0.9305555555555556,
+    "acc_fusion": 0.875,
+    "acc_kawase": 0.5555555555555556,
+    "acc_classical": 0.9305555555555556
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 8,
+    "acc_recon": 0.9305555555555556,
+    "acc_fusion": 0.875,
+    "acc_kawase": 0.6388888888888888,
+    "acc_classical": 0.9444444444444444
+  },
+  {
+    "dataset": "synthetic_a0.75",
+    "seed": 9,
+    "acc_recon": 0.9722222222222222,
+    "acc_fusion": 0.9444444444444444,
+    "acc_kawase": 0.5416666666666666,
+    "acc_classical": 0.9722222222222222
+  }
+]

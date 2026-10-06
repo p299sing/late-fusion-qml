@@ -1,0 +1,82 @@
+[
+  {
+    "qubits": 12,
+    "n_cuts": 1,
+    "n_seeds": 5,
+    "acc_fusion": 0.8866666666666667,
+    "acc_fusion_std": 0.026666666666666655,
+    "acc_B0": 0.8800000000000001,
+    "acc_B0_std": 0.01943650631615101,
+    "recon_overhead_9k": 9.0
+  },
+  {
+    "qubits": 12,
+    "n_cuts": 2,
+    "n_seeds": 5,
+    "acc_fusion": 0.8866666666666667,
+    "acc_fusion_std": 0.026666666666666655,
+    "acc_B0": 0.8766666666666667,
+    "acc_B0_std": 0.0270801280154532,
+    "recon_overhead_9k": 81.0
+  },
+  {
+    "qubits": 12,
+    "n_cuts": 3,
+    "n_seeds": 5,
+    "acc_fusion": 0.8866666666666667,
+    "acc_fusion_std": 0.026666666666666655,
+    "acc_B0": 0.8766666666666666,
+    "acc_B0_std": 0.03431876713662333,
+    "recon_overhead_9k": 729.0
+  },
+  {
+    "qubits": 12,
+    "n_cuts": 4,
+    "n_seeds": 5,
+    "acc_fusion": 0.8866666666666667,
+    "acc_fusion_std": 0.026666666666666655,
+    "acc_B0": 0.8600000000000001,
+    "acc_B0_std": 0.04027681991198188,
+    "recon_overhead_9k": 6561.0
+  },
+  {
+    "qubits": 12,
+    "n_cuts": 5,
+    "n_seeds": 5,
+    "acc_fusion": 0.8866666666666667,
+    "acc_fusion_std": 0.026666666666666655,
+    "acc_B0": 0.8633333333333333,
+    "acc_B0_std": 0.03559026084010435,
+    "recon_overhead_9k": 59049.0
+  },
+  {
+    "qubits": 12,
+    "n_cuts": 6,
+    "n_seeds": 5,
+    "acc_fusion": 0.8866666666666667,
+    "acc_fusion_std": 0.026666666666666655,
+    "acc_B0": 0.86,
+    "acc_B0_std": 0.02905932629027114,
+    "recon_overhead_9k": 531441.0
+  },
+  {
+    "qubits": 16,
+    "n_cuts": 8,
+    "n_seeds": 5,
+    "acc_fusion": 0.7791666666666667,
+    "acc_fusion_std": 0.050346024889977366,
+    "acc_B0": null,
+    "acc_B0_std": null,
+    "recon_overhead_9k": 43046721.0
+  },
+  {
+    "qubits": 20,
+    "n_cuts": 10,
+    "n_seeds": 5,
+    "acc_fusion": 0.8291666666666666,
+    "acc_fusion_std": 0.058034951154933845,
+    "acc_B0": null,
+    "acc_B0_std": null,
+    "recon_overhead_9k": 3486784401.0
+  }
+]

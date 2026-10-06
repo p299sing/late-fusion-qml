@@ -1,0 +1,37 @@
+[
+  {
+    "n_cuts": 1,
+    "real_overhead": 9.0,
+    "max_recon_error": 0.0021864046362600384,
+    "shots": 100000,
+    "n_seeds": 3
+  },
+  {
+    "n_cuts": 2,
+    "real_overhead": 81.0,
+    "max_recon_error": 0.002304214672016617,
+    "shots": 100000,
+    "n_seeds": 3
+  },
+  {
+    "n_cuts": 3,
+    "real_overhead": 729.0,
+    "max_recon_error": 0.001914554682043453,
+    "shots": 100000,
+    "n_seeds": 3
+  },
+  {
+    "n_cuts": 4,
+    "real_overhead": 6561.0,
+    "max_recon_error": 0.008558571233332812,
+    "shots": 20000,
+    "n_seeds": 2
+  },
+  {
+    "n_cuts": 5,
+    "real_overhead": 59049.0,
+    "max_recon_error": 0.0680901405490808,
+    "shots": 4000,
+    "n_seeds": 1
+  }
+]
