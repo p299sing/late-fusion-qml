@@ -1,8 +1,8 @@
-# Late fusion of independently trained quantum subcircuits
+# Late fusion of uncoupled quantum subcircuits
 
 Code, result files and figure scripts for
 
-> **How Much Reconstruction Does Quantum Machine Learning Need? Late Fusion of Independently Trained Quantum Subcircuits.**
+> **How Much Reconstruction Does Quantum Machine Learning Need? Late Fusion of Uncoupled Quantum Subcircuits.**
 > Prabhjot Singh, Adel N. Toosi, Rajkumar Buyya. Submitted to *Quantum Machine Intelligence*, 2026.
 
 Circuit cutting lets a quantum neural network run as small subcircuits, but reassembling its outputs by quasiprobability reconstruction costs a number of subexperiments exponential in the number of cuts. This repository implements and evaluates **late fusion** (subcircuits trained with no cross-cut coupling, combined by a small classical head), the **reconstruction dial** between fusion and full reconstruction (in the physical quasiprobability basis via `qiskit-addon-cutting`), and the **cut-entanglement diagnostic**, against exact reconstruction, prior readouts, and tuned classical baselines.
