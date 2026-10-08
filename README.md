@@ -43,7 +43,7 @@ Python 3.13, NumPy 2.5, SciPy 1.18, scikit-learn 1.9, Qiskit 2.5, Qiskit-Aer 0.1
 | classical split-feature fusion / train-free proxy | `python -m experiments.exp_classical_split` |
 | entangled-data boundary (Fig. 5) | `python -m experiments.exp_quantum` |
 | TFIM | `python -m experiments.exp_tfim` |
-| scaling and the trained deep-coupling study | `python -m experiments.exp_scaleup`, `exp_scaleup14`, `exp_scale_qubits`, `exp_deep_coupling` |
+| scaling and the trained deep-coupling study | `python -m experiments.exp_scaleup`, `exp_scaleup14`, `exp_scaleup14_converged` (150-iteration reference), `exp_scale_qubits`, `exp_deep_coupling` |
 | paired statistics and TOST equivalence (appendix D) | `python -m experiments.analyze_significance` |
 | second circuit family, ansatz B (robustness check, Results 5.1) | `python -m experiments.exp_independent_ansatzB`, `exp_benchmarks_ansatzB`, then `python -m experiments.analyze_ansatzB` |
 | all figures | `python make_figures.py` |
