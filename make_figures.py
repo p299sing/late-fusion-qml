@@ -23,8 +23,8 @@ STYLE = {
     "dpi": 300,
     "recon_color": "#c0392b",   # reconstruction (red)
     "fusion_color": "#2471a3",  # fusion (blue)
-    "accent": "#27ae60",        # green
-    "gray": "#7f8c8d",
+    "accent": "#196f3d",        # green (>=4.5:1 on white)
+    "gray": "#566573",          # (>=4.5:1 on white)
     "fontsize": 8,
 }
 plt.rcParams.update({
@@ -74,7 +74,7 @@ def fig_cost_crossover():
     ax2.plot(ks, a2, "v--", color=STYLE["accent"], lw=1, label="acc (fusion)")
     ax2.set_ylabel("accuracy"); ax2.set_ylim(0, 1.05); ax2.spines["top"].set_visible(False)
     lines = ax1.get_lines() + ax2.get_lines()
-    ax1.legend(lines, [l.get_label() for l in lines], fontsize=5.5, loc="center left")
+    ax1.legend(lines, [l.get_label() for l in lines], fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=4, frameon=False)
     _save(fig, "cost_crossover")
 
 
@@ -192,7 +192,7 @@ def fig_multilayer():
     ax2.set_ylabel(r"$|\langle Z_aZ_b\rangle-\langle Z_a\rangle\langle Z_b\rangle|$")
     ax2.spines["top"].set_visible(False)
     lines = ax1.get_lines() + ax2.get_lines()
-    ax1.legend(lines, [l.get_label() for l in lines], fontsize=5.5, loc="lower right")
+    ax1.legend(lines, [l.get_label() for l in lines], fontsize=7, loc="lower right")
     _save(fig, "multilayer")
 
 
@@ -211,7 +211,7 @@ def fig_scale_qubits():
 
 def fig_overhead_panel():
     """(a) cost crossover on our simulator + (b) real qiskit-addon-cutting 9^k, one figure*."""
-    fig, (ax1, ax3) = plt.subplots(1, 2, figsize=(7.0, 1.72))
+    fig, (ax1, ax3) = plt.subplots(1, 2, figsize=(7.0, 2.3))
     rows = _load("scaling_results.json")
     ks, rec, _ = _agg(rows, "n_cuts", "recon_overhead")
     _, fus, _ = _agg(rows, "n_cuts", "fusion_overhead")
@@ -226,7 +226,7 @@ def fig_overhead_panel():
     ax2.plot(ks, a2, "v--", color=STYLE["accent"], lw=1, label="acc (fusion)")
     ax2.set_ylabel("accuracy"); ax2.set_ylim(0, 1.05); ax2.spines["top"].set_visible(False)
     lines = ax1.get_lines() + ax2.get_lines()
-    ax1.legend(lines, [l.get_label() for l in lines], fontsize=5.5, loc="center left")
+    ax1.legend(lines, [l.get_label() for l in lines], fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=4, frameon=False)
     rows = _load("qiskit_results.json")
     ks = [r["n_cuts"] for r in rows]
     ax3.semilogy(ks, [r["real_overhead"] for r in rows], "o-", color=STYLE["recon_color"],
@@ -265,8 +265,8 @@ def fig_scaling_panel():
     # This panel is placed at 0.90\textwidth, so everything here renders at 0.9x:
     # AXLBL 6.5 -> 5.9pt, ticks 6.0 -> 5.4pt, legend 5.0 -> 4.5pt on paper.
     # Keep AXLBL > tick size so the hierarchy reads correctly.
-    AXLBL, TICKLBL, LEGSZ = 6.5, 6.0, 5.0
-    fig, (ax1, ax2, ax4) = plt.subplots(1, 3, figsize=(7.0, 1.30),
+    AXLBL, TICKLBL, LEGSZ = 8.0, 7.5, 7.0
+    fig, (ax1, ax2, ax4) = plt.subplots(1, 3, figsize=(7.0, 2.2),
                                         gridspec_kw={"width_ratios": [1.5, 1.2, 1]})
     rows = _load("scaleup_results.json")
     try:   # n=14 exact-reference extension (exp_scaleup14): one aggregated point at k=7
@@ -285,7 +285,7 @@ def fig_scaling_panel():
     (l_ovr,) = ax1.semilogy(ks, [r["recon_overhead_9k"] for r in rows], ":",
                             color=STYLE["recon_color"], lw=1, label="recon overhead $9^k$")
     ax1.axhspan(1e6, 2e10, color=STYLE["recon_color"], alpha=0.08)
-    ax1.text(1.1, 2e9, "reconstruction infeasible", fontsize=5.5, color=STYLE["recon_color"])
+    ax1.text(1.1, 3e9, "reconstruction infeasible", fontsize=6.5, color=STYLE["recon_color"])
     ax1.set_xlabel("number of cuts $k$"); ax1.set_ylabel("sampling overhead")
     ax1.set_ylim(1, 2e10); ax1.set_xticks(sorted(set(ks)))
     ax1.set_title("(a) fusion at scale")
@@ -307,13 +307,13 @@ def fig_scaling_panel():
             # white halo: the dotted 9^k overhead curve passes through these labels
             ax1b.annotate(f"$n{{=}}{r['qubits']}$", (r["n_cuts"], r["acc_fusion"]),
                           textcoords="offset points", xytext=(3 if last else 0, dy),
-                          fontsize=5.5, ha="right" if last else "center",
+                          fontsize=7, ha="right" if last else "center",
                           bbox=dict(facecolor="white", edgecolor="none",
                                     boxstyle="square,pad=0.12", alpha=0.85))
     ax1b.set_ylabel("accuracy"); ax1b.set_ylim(0.4, 1.05)
     ax1b.spines["top"].set_visible(False)
     handles = [l_ovr, l_b0, err_fu]
-    ax1.legend(handles, [h.get_label() for h in handles], fontsize=LEGSZ, loc="lower right")
+    ax1.legend(handles, [h.get_label() for h in handles], fontsize=LEGSZ, loc="upper center", bbox_to_anchor=(0.5, -0.30), ncol=2, frameon=False, columnspacing=0.8, handletextpad=0.4)
     rows = _load("multilayer_results.json")
     Ls = [r["layers"] for r in rows]
     ax2.plot(Ls, [r["cut_entropy"] for r in rows], "o-", color="#8e44ad", label="cut entropy")
@@ -325,7 +325,7 @@ def fig_scaling_panel():
     ax3.set_ylabel(r"$|\langle Z_aZ_b\rangle-\langle Z_a\rangle\langle Z_b\rangle|$")
     ax3.spines["top"].set_visible(False)
     lines = ax2.get_lines() + ax3.get_lines()
-    ax2.legend(lines, [l.get_label() for l in lines], fontsize=5.5, loc="lower right")
+    ax2.legend(lines, [l.get_label() for l in lines], fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.30), ncol=1, frameon=False)
     d = _load("tfim_results.json")
     curve = d["entropy_curve"]
     ax4.plot(curve["g"], curve["S_A"], "-", color="#8e44ad", lw=1)
@@ -347,7 +347,7 @@ def fig_scaleup():
     ax1.semilogy(ks, [r["recon_overhead_9k"] for r in rows], ":", color=STYLE["recon_color"],
                  lw=1, label="recon overhead $9^k$")
     ax1.axhspan(1e6, 2e10, color=STYLE["recon_color"], alpha=0.08)
-    ax1.text(1.2, 3e7, "reconstruction infeasible", fontsize=5.5, color=STYLE["recon_color"])
+    ax1.text(1.2, 3e7, "reconstruction infeasible", fontsize=7, color=STYLE["recon_color"])
     ax1.set_xlabel("number of cuts $k$"); ax1.set_ylabel("sampling overhead")
     ax1.set_ylim(1, 2e10); ax1.set_xticks(sorted(set(ks)))
     ax2 = ax1.twinx()
@@ -360,11 +360,11 @@ def fig_scaleup():
     for r in rows:  # annotate the qubit count at each frontier point
         if r["n_cuts"] in (6, 8, 10):
             ax2.annotate(f"$n{{=}}{r['qubits']}$", (r["n_cuts"], r["acc_fusion"]),
-                         textcoords="offset points", xytext=(0, -11), fontsize=5.5,
+                         textcoords="offset points", xytext=(0, -11), fontsize=7,
                          ha="center")
     ax2.set_ylabel("accuracy"); ax2.set_ylim(0.4, 1.05); ax2.spines["top"].set_visible(False)
     lines = ax1.get_lines() + ax2.get_lines()
-    ax1.legend(lines, [l.get_label() for l in lines], fontsize=5.5, loc="lower left")
+    ax1.legend(lines, [l.get_label() for l in lines], fontsize=7, loc="lower left")
     _save(fig, "scaleup")
 
 
@@ -380,7 +380,7 @@ def fig_tfim():
                 color=STYLE["fusion_color"], label="fusion" if i == 0 else None)
         ax1.bar(i + 0.17, np.mean([r["acc_joint"] for r in rs]), 0.34,
                 color=STYLE["recon_color"], label="joint" if i == 0 else None)
-    ax1.set_xticks([0, 1]); ax1.set_xticklabels(["phase", "bond"], fontsize=6)
+    ax1.set_xticks([0, 1]); ax1.set_xticklabels(["phase", "bond"], fontsize=7)
     ax1.set_ylim(0.5, 1.02); ax1.set_ylabel("accuracy"); ax1.legend(fontsize=5)
     ax2.plot(curve["g"], curve["S_A"], "-", color="#8e44ad", lw=1)
     ax2.axvline(1.0, ls=":", color="k", lw=0.6)
@@ -438,7 +438,7 @@ def fig_deep_coupling():
             ax = axes[i, j]
             im = ax.imshow(M, cmap=cmap, vmin=vmin, vmax=vmax, aspect="auto", origin="lower")
             for (li, ai), v in np.ndenumerate(M):
-                ax.text(ai, li, f"{v:.2f}", ha="center", va="center", fontsize=STYLE["fontsize"] - 3,
+                ax.text(ai, li, f"{v:.2f}", ha="center", va="center", fontsize=STYLE["fontsize"] - 1.5,
                         color="white" if (cmap == "Purples" and v > 0.55) else "black")
             ax.set_xticks(range(len(als))); ax.set_xticklabels([f"{a:g}" for a in als])
             ax.set_yticks(range(len(Ls))); ax.set_yticklabels([str(L) for L in Ls])
