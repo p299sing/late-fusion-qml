@@ -21,6 +21,14 @@ expectation values to machine precision (see tests/test_cutting.py).  If you add
 cross-register gates OUTSIDE the coupling layer you break the clean single-layer
 factorization -- see CODE_FLOW.md ("Scope & how to extend").
 
+Ansatz families
+---------------
+QNNConfig.ansatz selects the register-local variational block (the coupling
+layer is RZZ in both cases, so the cut machinery is unchanged):
+  "A" (default)  RY,RZ per qubit + CZ ring,            x depth   -- the original block
+  "B"            RX,RY per qubit + CNOT ladder (no wrap), x depth -- robustness check
+Both use 2 angles per qubit per layer, so the parameter layout is identical.
+
 Entangler
 ---------
 The coupling gate is RZZ(phi).  phi is a knob on entangling power: phi=0 is the
@@ -48,6 +56,8 @@ class QNNConfig:
     n_cuts: int = 1              # number of cross gates in the coupling layer
     trainable_coupling: bool = True   # is the RZZ angle a trained parameter?
     coupling_init: float = np.pi / 2  # initial RZZ angle (max-entangling by default)
+    ansatz: str = "A"            # local block family: "A" = RY,RZ + CZ ring (default);
+                                 #                     "B" = RX,RY + CNOT ladder (no wrap)
 
     @property
     def n(self) -> int:
@@ -134,18 +144,45 @@ def encode(psi: np.ndarray, x: np.ndarray, n_reg: int) -> np.ndarray:
     return psi
 
 
-def local_var_layer(psi: np.ndarray, block: np.ndarray, n_reg: int, depth: int) -> np.ndarray:
-    """A hardware-efficient variational block: RY,RZ per qubit + CZ ring, x depth."""
+# Ansatz families for the register-local variational block.  Each entry is
+# (first 1q rotation, second 1q rotation, 2q entangler, wrap-around ring?).
+# Both families use 2 angles per qubit per layer, so the parameter layout
+# (param_count / init_params / _slice) is identical for "A" and "B".
+ANSATZ_FAMILIES = {
+    "A": (qsim.ry, qsim.rz, qsim.CZ, True),    # RY,RZ per qubit + CZ ring (original)
+    "B": (qsim.rx, qsim.ry, qsim.CX, False),   # RX,RY per qubit + CNOT ladder (no wrap)
+}
+
+
+def _ansatz_gates(ansatz):
+    """Resolve an ansatz spec (string or QNNConfig) to its gate family."""
+    if isinstance(ansatz, QNNConfig):
+        ansatz = ansatz.ansatz
+    try:
+        return ANSATZ_FAMILIES[ansatz]
+    except KeyError:
+        raise ValueError(f"unknown ansatz {ansatz!r}; choose from {sorted(ANSATZ_FAMILIES)}")
+
+
+def local_var_layer(psi: np.ndarray, block: np.ndarray, n_reg: int, depth: int,
+                    ansatz="A") -> np.ndarray:
+    """A hardware-efficient variational block, x depth.
+
+    ansatz "A" (default): RY,RZ per qubit + CZ ring  (wrap-around CZ if n_reg > 2).
+    ansatz "B":           RX,RY per qubit + CNOT ladder CX(q, q+1), q = 0..n_reg-2.
+    `ansatz` may be the family string or a QNNConfig (its .ansatz is used).
+    """
+    rot1, rot2, ent, wrap = _ansatz_gates(ansatz)
     idx = 0
     for _ in range(depth):
         for q in range(n_reg):
-            psi = qsim.apply_1q(psi, qsim.ry(block[idx]), q, n_reg); idx += 1
-            psi = qsim.apply_1q(psi, qsim.rz(block[idx]), q, n_reg); idx += 1
-        # entangling ring within the register (only if >1 qubit)
+            psi = qsim.apply_1q(psi, rot1(block[idx]), q, n_reg); idx += 1
+            psi = qsim.apply_1q(psi, rot2(block[idx]), q, n_reg); idx += 1
+        # entangling layer within the register (only if >1 qubit)
         for q in range(n_reg - 1):
-            psi = qsim.apply_2q(psi, qsim.CZ, q, q + 1, n_reg)
-        if n_reg > 2:
-            psi = qsim.apply_2q(psi, qsim.CZ, n_reg - 1, 0, n_reg)
+            psi = qsim.apply_2q(psi, ent, q, q + 1, n_reg)
+        if wrap and n_reg > 2:
+            psi = qsim.apply_2q(psi, ent, n_reg - 1, 0, n_reg)
     return psi
 
 
@@ -169,10 +206,10 @@ class PreparedCircuit:
 
     def finish_A(self, psiA: np.ndarray) -> np.ndarray:
         """Apply A's post-coupling local gates to an A-substate."""
-        return local_var_layer(psiA, self.postA, self.cfg.n_A, self.cfg.depth)
+        return local_var_layer(psiA, self.postA, self.cfg.n_A, self.cfg.depth, self.cfg.ansatz)
 
     def finish_B(self, psiB: np.ndarray) -> np.ndarray:
-        return local_var_layer(psiB, self.postB, self.cfg.n_B, self.cfg.depth)
+        return local_var_layer(psiB, self.postB, self.cfg.n_B, self.cfg.depth, self.cfg.ansatz)
 
     # local (register-relative) boundary indices touched by the coupling layer
     def local_cross_pairs(self):
@@ -194,11 +231,11 @@ def prepare(cfg: QNNConfig, params: np.ndarray, x: np.ndarray) -> PreparedCircui
 
     psiA = qsim.zero_state(cfg.n_A)
     psiA = encode(psiA, xA, cfg.n_A)
-    psiA = local_var_layer(psiA, params[slice(*s["pre_A"])], cfg.n_A, cfg.depth)
+    psiA = local_var_layer(psiA, params[slice(*s["pre_A"])], cfg.n_A, cfg.depth, cfg.ansatz)
 
     psiB = qsim.zero_state(cfg.n_B)
     psiB = encode(psiB, xB, cfg.n_B)
-    psiB = local_var_layer(psiB, params[slice(*s["pre_B"])], cfg.n_B, cfg.depth)
+    psiB = local_var_layer(psiB, params[slice(*s["pre_B"])], cfg.n_B, cfg.depth, cfg.ansatz)
 
     return PreparedCircuit(
         cfg=cfg,
@@ -237,15 +274,16 @@ def _apply_block_on_subset(psi, block, qubits, cfg: QNNConfig):
     """
     n = cfg.n
     n_reg = len(qubits)
+    rot1, rot2, ent, wrap = _ansatz_gates(cfg)
     idx = 0
     for _ in range(cfg.depth):
         for k, q in enumerate(qubits):
-            psi = qsim.apply_1q(psi, qsim.ry(block[idx]), q, n); idx += 1
-            psi = qsim.apply_1q(psi, qsim.rz(block[idx]), q, n); idx += 1
+            psi = qsim.apply_1q(psi, rot1(block[idx]), q, n); idx += 1
+            psi = qsim.apply_1q(psi, rot2(block[idx]), q, n); idx += 1
         for k in range(n_reg - 1):
-            psi = qsim.apply_2q(psi, qsim.CZ, qubits[k], qubits[k + 1], n)
-        if n_reg > 2:
-            psi = qsim.apply_2q(psi, qsim.CZ, qubits[-1], qubits[0], n)
+            psi = qsim.apply_2q(psi, ent, qubits[k], qubits[k + 1], n)
+        if wrap and n_reg > 2:
+            psi = qsim.apply_2q(psi, ent, qubits[-1], qubits[0], n)
     return psi
 
 

@@ -1,0 +1,434 @@
+{
+  "independent_A": [
+    {
+      "comparison": "A/independent/0.25: uncoupled - B0",
+      "n_pairs": 20,
+      "mean_gap": 0.007857142857142868,
+      "ci95": [
+        -0.004285714285714276,
+        0.019285714285714285
+      ],
+      "ci90": [
+        -0.0021428571428571295,
+        0.017142857142857154
+      ],
+      "wilcoxon_p": 0.0724947934869996,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent",
+      "group": 0.25,
+      "n": 20,
+      "B0": "0.949+-0.020",
+      "frozen": "0.924+-0.035",
+      "uncoupled": "0.957+-0.023"
+    },
+    {
+      "comparison": "A/independent/0.5: uncoupled - B0",
+      "n_pairs": 20,
+      "mean_gap": 0.0028571428571428636,
+      "ci95": [
+        -0.010714285714285714,
+        0.017142857142857147
+      ],
+      "ci90": [
+        -0.008571428571428568,
+        0.014999999999999996
+      ],
+      "wilcoxon_p": 0.7740749678660384,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent",
+      "group": 0.5,
+      "n": 20,
+      "B0": "0.943+-0.030",
+      "frozen": "0.828+-0.117",
+      "uncoupled": "0.946+-0.028"
+    },
+    {
+      "comparison": "A/independent/0.75: uncoupled - B0",
+      "n_pairs": 20,
+      "mean_gap": -0.015000000000000003,
+      "ci95": [
+        -0.035714285714285726,
+        0.002857142857142858
+      ],
+      "ci90": [
+        -0.03214285714285715,
+        1.1102230246251566e-17
+      ],
+      "wilcoxon_p": 0.19098463706506208,
+      "delta": 0.02,
+      "tost_equivalent": false,
+      "verdict": "inconclusive",
+      "group": 0.75,
+      "n": 20,
+      "B0": "0.927+-0.030",
+      "frozen": "0.752+-0.178",
+      "uncoupled": "0.912+-0.041"
+    },
+    {
+      "comparison": "A/independent/1.0: uncoupled - B0",
+      "n_pairs": 20,
+      "mean_gap": -0.034999999999999996,
+      "ci95": [
+        -0.05500000000000001,
+        -0.0157142857142857
+      ],
+      "ci90": [
+        -0.05142857142857145,
+        -0.018571428571428565
+      ],
+      "wilcoxon_p": 0.005511590690616373,
+      "delta": 0.02,
+      "tost_equivalent": false,
+      "verdict": "deficit",
+      "group": 1.0,
+      "n": 20,
+      "B0": "0.919+-0.041",
+      "frozen": "0.790+-0.174",
+      "uncoupled": "0.884+-0.040"
+    }
+  ],
+  "independent_B": [
+    {
+      "comparison": "B/independent/0.25: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": 0.01428571428571429,
+      "ci95": [
+        -0.0028571428571428693,
+        0.03142857142857146
+      ],
+      "ci90": [
+        -2.2204460492503132e-17,
+        0.028571428571428602
+      ],
+      "wilcoxon_p": 0.19921875,
+      "delta": 0.02,
+      "tost_equivalent": false,
+      "verdict": "inconclusive",
+      "group": 0.25,
+      "n": 10,
+      "B0": "0.949+-0.019",
+      "frozen": "0.883+-0.067",
+      "uncoupled": "0.963+-0.018",
+      "cut_ent": "0.867+-0.168"
+    },
+    {
+      "comparison": "B/independent/0.5: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": 0.0028571428571428693,
+      "ci95": [
+        -0.01142857142857141,
+        0.015714285714285726
+      ],
+      "ci90": [
+        -0.008571428571428574,
+        0.01285714285714289
+      ],
+      "wilcoxon_p": 0.46875,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent",
+      "group": 0.5,
+      "n": 10,
+      "B0": "0.953+-0.028",
+      "frozen": "0.823+-0.128",
+      "uncoupled": "0.956+-0.030",
+      "cut_ent": "0.879+-0.105"
+    },
+    {
+      "comparison": "B/independent/0.75: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": -0.012857142857142867,
+      "ci95": [
+        -0.05,
+        0.021428571428571398
+      ],
+      "ci90": [
+        -0.042857142857142885,
+        0.0157142857142857
+      ],
+      "wilcoxon_p": 0.62109375,
+      "delta": 0.02,
+      "tost_equivalent": false,
+      "verdict": "inconclusive",
+      "group": 0.75,
+      "n": 10,
+      "B0": "0.916+-0.040",
+      "frozen": "0.719+-0.165",
+      "uncoupled": "0.903+-0.050",
+      "cut_ent": "0.952+-0.177"
+    },
+    {
+      "comparison": "B/independent/1.0: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": -0.009999999999999998,
+      "ci95": [
+        -0.03428571428571431,
+        0.017142857142857147
+      ],
+      "ci90": [
+        -0.03142857142857144,
+        0.012857142857142867
+      ],
+      "wilcoxon_p": 0.47265625,
+      "delta": 0.02,
+      "tost_equivalent": false,
+      "verdict": "inconclusive",
+      "group": 1.0,
+      "n": 10,
+      "B0": "0.901+-0.058",
+      "frozen": "0.773+-0.128",
+      "uncoupled": "0.891+-0.044",
+      "cut_ent": "0.937+-0.139"
+    }
+  ],
+  "independent_pooled": {
+    "A": {
+      "comparison": "A/independent/pooled: uncoupled - B0",
+      "n_pairs": 80,
+      "mean_gap": -0.009821428571428568,
+      "ci95": [
+        -0.019107142857142857,
+        -0.0008928571428571369
+      ],
+      "ci90": [
+        -0.0175,
+        -0.0023214285714285646
+      ],
+      "wilcoxon_p": 0.11073009149007444,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent (small significant offset)"
+    },
+    "B": {
+      "comparison": "B/independent/pooled: uncoupled - B0",
+      "n_pairs": 40,
+      "mean_gap": -0.0014285714285714262,
+      "ci95": [
+        -0.014285714285714296,
+        0.010714285714285721
+      ],
+      "ci90": [
+        -0.012142857142857155,
+        0.008571428571428587
+      ],
+      "wilcoxon_p": 0.8027452747950241,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent"
+    }
+  },
+  "bench_A": [
+    {
+      "comparison": "A/bench/moons: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": 0.0022222222222222144,
+      "ci95": [
+        -0.02777777777777779,
+        0.03777777777777778
+      ],
+      "ci90": [
+        -0.023333333333333352,
+        0.03111111111111111
+      ],
+      "wilcoxon_p": 0.7578125,
+      "delta": 0.02,
+      "tost_equivalent": false,
+      "verdict": "inconclusive",
+      "group": "moons",
+      "n": 10,
+      "B0": "0.879+-0.033",
+      "frozen": "-",
+      "uncoupled": "0.881+-0.057",
+      "acc_B6": "0.814+-0.046",
+      "acc_B7": "0.843+-0.030",
+      "kneeQ": "0.420+-0.194",
+      "cut_ent": "0.330+-0.065"
+    },
+    {
+      "comparison": "A/bench/circles: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": -0.00888888888888888,
+      "ci95": [
+        -0.015555555555555545,
+        -0.0033333333333333327
+      ],
+      "ci90": [
+        -0.014444444444444426,
+        -0.004444444444444429
+      ],
+      "wilcoxon_p": 0.03125,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent (small significant offset)",
+      "group": "circles",
+      "n": 10,
+      "B0": "0.981+-0.007",
+      "frozen": "-",
+      "uncoupled": "0.972+-0.011",
+      "acc_B6": "0.974+-0.012",
+      "acc_B7": "0.978+-0.010",
+      "kneeQ": "0.020+-0.040",
+      "cut_ent": "0.063+-0.041"
+    },
+    {
+      "comparison": "A/bench/iris: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 1.0,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent",
+      "group": "iris",
+      "n": 10,
+      "B0": "1.000+-0.000",
+      "frozen": "-",
+      "uncoupled": "1.000+-0.000",
+      "acc_B6": "0.937+-0.143",
+      "acc_B7": "1.000+-0.000",
+      "kneeQ": "0.000+-0.000",
+      "cut_ent": "0.190+-0.038"
+    },
+    {
+      "comparison": "A/bench/breast_cancer: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": -0.00643274853801169,
+      "ci95": [
+        -0.014619883040935644,
+        0.0005847953216374213
+      ],
+      "ci90": [
+        -0.01286549707602338,
+        -0.0005847953216373992
+      ],
+      "wilcoxon_p": 0.1875,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent",
+      "group": "breast_cancer",
+      "n": 10,
+      "B0": "0.939+-0.012",
+      "frozen": "-",
+      "uncoupled": "0.932+-0.013",
+      "acc_B6": "0.670+-0.060",
+      "acc_B7": "0.849+-0.075",
+      "kneeQ": "0.070+-0.110",
+      "cut_ent": "0.568+-0.263"
+    }
+  ],
+  "bench_B": [
+    {
+      "comparison": "B/bench/moons: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": -0.004444444444444462,
+      "ci95": [
+        -0.03555555555555558,
+        0.030000000000000006
+      ],
+      "ci90": [
+        -0.031111111111111145,
+        0.024444444444444446
+      ],
+      "wilcoxon_p": 0.68359375,
+      "delta": 0.02,
+      "tost_equivalent": false,
+      "verdict": "inconclusive",
+      "group": "moons",
+      "n": 10,
+      "B0": "0.879+-0.033",
+      "frozen": "-",
+      "uncoupled": "0.874+-0.054",
+      "acc_B6": "0.812+-0.024",
+      "acc_B7": "0.849+-0.035",
+      "kneeQ": "0.370+-0.237",
+      "cut_ent": "0.331+-0.040"
+    },
+    {
+      "comparison": "B/bench/circles: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": -0.015555555555555545,
+      "ci95": [
+        -0.02666666666666665,
+        -0.006666666666666654
+      ],
+      "ci90": [
+        -0.024444444444444446,
+        -0.007777777777777772
+      ],
+      "wilcoxon_p": 0.015625,
+      "delta": 0.02,
+      "tost_equivalent": false,
+      "verdict": "deficit",
+      "group": "circles",
+      "n": 10,
+      "B0": "0.981+-0.007",
+      "frozen": "-",
+      "uncoupled": "0.966+-0.020",
+      "acc_B6": "0.963+-0.018",
+      "acc_B7": "0.967+-0.019",
+      "kneeQ": "0.090+-0.114",
+      "cut_ent": "0.178+-0.020"
+    },
+    {
+      "comparison": "B/bench/iris: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 1.0,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent",
+      "group": "iris",
+      "n": 10,
+      "B0": "1.000+-0.000",
+      "frozen": "-",
+      "uncoupled": "1.000+-0.000",
+      "acc_B6": "0.960+-0.099",
+      "acc_B7": "1.000+-0.000",
+      "kneeQ": "0.000+-0.000",
+      "cut_ent": "0.461+-0.108"
+    },
+    {
+      "comparison": "B/bench/breast_cancer: uncoupled - B0",
+      "n_pairs": 10,
+      "mean_gap": 0.002923976608187151,
+      "ci95": [
+        1.1102230246251566e-17,
+        0.00584795321637428
+      ],
+      "ci90": [
+        0.0005847953216374435,
+        0.00526315789473687
+      ],
+      "wilcoxon_p": 0.09375,
+      "delta": 0.02,
+      "tost_equivalent": true,
+      "verdict": "equivalent (small significant offset)",
+      "group": "breast_cancer",
+      "n": 10,
+      "B0": "0.937+-0.014",
+      "frozen": "-",
+      "uncoupled": "0.940+-0.011",
+      "acc_B6": "0.733+-0.078",
+      "acc_B7": "0.583+-0.184",
+      "kneeQ": "0.000+-0.000",
+      "cut_ent": "0.723+-0.158"
+    }
+  ]
+}

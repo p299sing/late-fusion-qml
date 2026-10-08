@@ -110,6 +110,7 @@ will fail — which is the point.
 |---|---|---|
 | Gate set / add a gate | `qsim.py` | add a 2x2 or 4x4 matrix + (if 2q) it works with `apply_2q` |
 | Ansatz depth/width, encoding, # cuts, entangler | `circuits.py` (`QNNConfig`, `local_var_layer`, `coupling_unitary_4x4`) | keep cross-gates ONLY in the coupling layer |
+| Local-block ansatz family | `circuits.py` (`QNNConfig.ansatz`, `ANSATZ_FAMILIES`) | `"A"` (default) RY,RZ+CZ ring; `"B"` RX,RY+CNOT ladder (no wrap). Same param layout. Robustness check: `exp_independent_ansatzB.py`, `exp_benchmarks_ansatzB.py`, `analyze_ansatzB.py`; guarded by `tests/test_ansatz_b.py` (A bit-identical to `tests/data/ansatz_A_reference.npz`) |
 | Readout observable set | `circuits.default_observables` | must stay product (O_A⊗O_B) to remain reconstructable |
 | How reconstruction / Q-dial truncation works | `cutting.py` (`reconstruct_observable`, `_term_weights`) | Q-dial ranks (nu,mu) terms by coefficient mass |
 | What late fusion "sees" | `cutting.subcircuit_raw_features` | currently <Z> per subcircuit qubit; add <X>,<Y> via `paulis=` |
