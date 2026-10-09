@@ -270,7 +270,11 @@ def fig_scaling_panel():
                                         gridspec_kw={"width_ratios": [1.5, 1.2, 1]})
     rows = _load("scaleup_results.json")
     try:   # n=14 exact-reference extension (exp_scaleup14): one aggregated point at k=7
-        n14 = [r for r in _load("scaleup_n14.json") if r["n_cuts"] == 7]
+        try:
+            n14_rows = _load("scaleup_n14_converged.json")   # 150-iteration reference (preferred)
+        except FileNotFoundError:
+            n14_rows = _load("scaleup_n14.json")
+        n14 = [r for r in n14_rows if r["n_cuts"] == 7]
         if n14:
             rows.append({"qubits": 14, "n_cuts": 7, "n_seeds": len(n14),
                          "acc_fusion": float(np.mean([r["acc_fusion"] for r in n14])),

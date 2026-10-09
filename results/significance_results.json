@@ -137,88 +137,88 @@
   },
   {
     "comparison": "independent/alpha=0.25: fusion - reconstruction",
-    "n_pairs": 10,
-    "mean_gap": 0.005714285714285727,
+    "n_pairs": 20,
+    "mean_gap": 0.007857142857142868,
     "ci95": [
-      -0.015714285714285715,
-      0.02428571428571431
+      -0.004285714285714276,
+      0.019285714285714285
     ],
     "ci90": [
-      -0.012857142857142834,
-      0.021428571428571463
+      -0.0021428571428571295,
+      0.017142857142857154
     ],
-    "wilcoxon_p": 0.53125,
+    "wilcoxon_p": 0.0724947934869996,
     "delta": 0.02,
-    "tost_equivalent": false,
-    "verdict": "inconclusive"
+    "tost_equivalent": true,
+    "verdict": "equivalent"
   },
   {
     "comparison": "independent/alpha=0.5: fusion - reconstruction",
-    "n_pairs": 10,
-    "mean_gap": 0.015714285714285726,
+    "n_pairs": 20,
+    "mean_gap": 0.0028571428571428636,
     "ci95": [
-      -0.002857142857142858,
-      0.03571428571428574
+      -0.010714285714285714,
+      0.017142857142857147
     ],
     "ci90": [
-      -1.1102230246251566e-17,
-      0.032857142857142876
+      -0.008571428571428568,
+      0.014999999999999996
     ],
-    "wilcoxon_p": 0.25,
+    "wilcoxon_p": 0.7740749678660384,
     "delta": 0.02,
-    "tost_equivalent": false,
-    "verdict": "inconclusive"
+    "tost_equivalent": true,
+    "verdict": "equivalent"
   },
   {
     "comparison": "independent/alpha=0.75: fusion - reconstruction",
-    "n_pairs": 10,
-    "mean_gap": -0.008571428571428574,
+    "n_pairs": 20,
+    "mean_gap": -0.015000000000000003,
     "ci95": [
-      -0.030000000000000027,
-      0.011428571428571455
+      -0.035714285714285726,
+      0.002857142857142858
     ],
     "ci90": [
-      -0.025714285714285755,
-      0.008571428571428586
+      -0.03214285714285715,
+      1.1102230246251566e-17
     ],
-    "wilcoxon_p": 0.58984375,
+    "wilcoxon_p": 0.19098463706506208,
     "delta": 0.02,
     "tost_equivalent": false,
     "verdict": "inconclusive"
   },
   {
     "comparison": "independent/alpha=1.0: fusion - reconstruction",
-    "n_pairs": 10,
-    "mean_gap": -0.037142857142857144,
+    "n_pairs": 20,
+    "mean_gap": -0.034999999999999996,
     "ci95": [
-      -0.05714285714285714,
-      -0.018571428571428582
+      -0.05500000000000001,
+      -0.0157142857142857
     ],
     "ci90": [
-      -0.05428571428571427,
-      -0.02142857142857143
+      -0.05142857142857145,
+      -0.018571428571428565
     ],
-    "wilcoxon_p": 0.0078125,
+    "wilcoxon_p": 0.005511590690616373,
     "delta": 0.02,
     "tost_equivalent": false,
     "verdict": "deficit"
   },
   {
     "comparison": "independent/pooled: fusion - reconstruction",
-    "n_pairs": 40,
-    "mean_gap": -0.006071428571428566,
+    "n_pairs": 80,
+    "mean_gap": -0.009821428571428568,
     "ci95": [
-      -0.017857142857142863,
-      0.0053571428571428745
+      -0.019107142857142857,
+      -0.0008928571428571369
     ],
     "ci90": [
-      -0.016071428571428566,
-      0.0035714285714285865
+      -0.0175,
+      -0.0023214285714285646
     ],
-    "wilcoxon_p": 0.4395677467571575,
+    "wilcoxon_p": 0.11073009149007444,
     "delta": 0.02,
     "tost_equivalent": true,
-    "verdict": "equivalent"
+    "verdict": "equivalent (small significant offset)"
   },
   {
     "comparison": "faithful/fashion_mnist: fusion - reconstruction",
