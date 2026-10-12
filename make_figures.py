@@ -49,7 +49,7 @@ def _fsp(h_journal, h_aaai=None):
 STYLE["figsize"] = _fs(2.6)
 # Typeface for the Fig. 1 schematic only. "Comic Neue" (OFL, files in paper/fonts/) is the
 # open-source Comic Sans equivalent; set to None to fall back to the default sans-serif.
-PIPELINE_FONT = "Comic Neue"
+PIPELINE_FONT = None   # default sans-serif, as in every other figure; "Comic Neue" was tried and reverted
 plt.rcParams.update({
     # AAAI forbids Type 3 fonts, even inside graphics -> embed TrueType (Type 42)
     "pdf.fonttype": 42, "ps.fonttype": 42,
