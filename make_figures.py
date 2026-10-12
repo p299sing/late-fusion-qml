@@ -47,6 +47,9 @@ def _fsp(h_journal, h_aaai=None):
     """panel figsize spanning the text width."""
     return (WP, h_journal if JOURNAL else (h_aaai or h_journal))
 STYLE["figsize"] = _fs(2.6)
+# Typeface for the Fig. 1 schematic only. "Comic Neue" (OFL, files in paper/fonts/) is the
+# open-source Comic Sans equivalent; set to None to fall back to the default sans-serif.
+PIPELINE_FONT = "Comic Neue"
 plt.rcParams.update({
     # AAAI forbids Type 3 fonts, even inside graphics -> embed TrueType (Type 42)
     "pdf.fonttype": 42, "ps.fonttype": 42,
@@ -62,8 +65,9 @@ def _load(name):
         return json.load(f)
 
 
-def _save(fig, name, w_pad=None):
-    fig.tight_layout(pad=0.4, **({"w_pad": w_pad} if w_pad else {}))
+def _save(fig, name, w_pad=None, tight=True):
+    if tight:
+        fig.tight_layout(pad=0.4, **({"w_pad": w_pad} if w_pad else {}))
     fig.savefig(os.path.join(OUT, name + ".png"), dpi=STYLE["dpi"], bbox_inches="tight")
     fig.savefig(os.path.join(OUT, name + ".pdf"), bbox_inches="tight")
     plt.close(fig)
@@ -486,61 +490,90 @@ def fig_pipeline():
     """Experimental and tool flow (Fig. 1): data -> encoding -> circuit -> readout -> evaluation.
     Column headers name the stage; box colour names the path (grey shared, red reconstruction,
     amber intermediate dial, blue fusion, green evaluation); the italic lines inside each readout
-    box name the engines that executed it."""
+    box name the engines that executed it. Typeface: PIPELINE_FONT (see top of file)."""
+    import glob
     import matplotlib.patches as mpatches
-    f_head, f_title, f_body, f_eng = 7.0, 7.0, 6.5, 6.0
-    fig, ax = plt.subplots(figsize=(WP, WP * 0.66))
-    ax.set_xlim(0, 100); ax.set_ylim(0, 66); ax.axis("off")
-    C = {"shared": ("#f2f3f4", "#5d6d7e"), "recon": ("#fadbd8", "#c0392b"), "dial": ("#fdebd0", "#b9770e"),
-         "fusion": ("#d6eaf8", "#2471a3"), "eval": ("#e3f1e5", "#1e8449")}
-    ink, soft = "#1b2631", "#515a5a"
-    def box(x, y, w, h, title, body, kind, engine=None, dashed=False, f_t=None):
-        fc, ec = ("white", "#707b7c") if dashed else C[kind]
-        ax.add_patch(mpatches.FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=1.0",
-                                             fc=fc, ec=ec, lw=0.9, ls=(0, (3, 2)) if dashed else "-"))
-        top = y + h - 1.4
-        ax.text(x + w / 2, top, title, ha="center", va="top", fontsize=f_t or f_title, fontweight="bold", color=ink)
-        ax.text(x + w / 2, top - 2.9, body, ha="center", va="top", fontsize=f_body, linespacing=1.3, color=ink)
-        if engine:
-            ax.text(x + w / 2, y + 1.1, engine, ha="center", va="bottom", fontsize=f_eng, style="italic", linespacing=1.3, color=soft)
-    def arrow(x0, y0, x1, y1, color="#2c3e50"):
-        if abs(y0 - y1) > 1e-9:
+    from matplotlib import font_manager as fm
+    fam = None
+    if PIPELINE_FONT:
+        files = glob.glob(os.path.join(HERE, "paper", "fonts", "*.ttf"))
+        for f in files:
+            fm.fontManager.addfont(f)
+        if files:
+            fam = PIPELINE_FONT
+    rc = {"font.family": fam, "mathtext.fontset": "custom", "mathtext.rm": fam, "mathtext.it": fam + ":italic",
+          "mathtext.bf": fam + ":bold", "mathtext.sf": fam, "mathtext.cal": fam} if fam else {}
+    f_head, f_title, f_body, f_eng = 6.5, 6.5, 6.0, 5.5
+    with plt.rc_context(rc):
+        fig, ax = plt.subplots(figsize=(WP, WP * 0.66))
+        fig.subplots_adjust(0, 0, 1, 1)
+        ax.set_xlim(0, 100); ax.set_ylim(0, 66); ax.axis("off")
+        C = {"shared": ("#f2f3f4", "#5d6d7e"), "recon": ("#fadbd8", "#c0392b"), "dial": ("#fdebd0", "#b9770e"),
+             "fusion": ("#d6eaf8", "#2471a3"), "eval": ("#e3f1e5", "#1e8449")}
+        ink, soft, line = "#1b2631", "#515a5a", "#34495e"
+        def box(x, y, w, h, title, body, kind, engine=None, dashed=False):
+            fc, ec = ("white", "#707b7c") if dashed else C[kind]
+            ax.add_patch(mpatches.FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=1.0",
+                                                 fc=fc, ec=ec, lw=0.9, ls=(0, (3, 2)) if dashed else "-"))
+            top = y + h - 1.3
+            ax.text(x + w / 2, top, title, ha="center", va="top", fontsize=f_title, fontweight="bold", color=ink)
+            ax.text(x + w / 2, top - 2.7, body, ha="center", va="top", fontsize=f_body, linespacing=1.1, color=ink)
+            if engine:
+                ax.text(x + w / 2, y + 1.0, engine, ha="center", va="bottom", fontsize=f_eng, style="italic", linespacing=1.1, color=soft)
+        def head(x0, x1, y):   # arrowhead only
+            ax.annotate("", xy=(x1, y), xytext=(x0, y),
+                        arrowprops=dict(arrowstyle="-|>", lw=0.8, color=line, shrinkA=0, shrinkB=0, mutation_scale=6))
+        def fanout(x0, y0, x1, targets):
+            """one trunk from (x0,y0) to the gap midpoint, a vertical bus, one branch per target."""
             xm = (x0 + x1) / 2
-            ax.plot([x0, xm, xm], [y0, y0, y1], color=color, lw=0.8, solid_capstyle="round", solid_joinstyle="round")
-            x0, y0 = xm, y1
-        ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
-                    arrowprops=dict(arrowstyle="-|>", lw=0.8, color=color, shrinkA=0, shrinkB=0, mutation_scale=6))
-    cols = [(1, 15.5, "DATA"), (18.5, 15.5, "ENCODING"), (36, 20, "CIRCUIT"), (58, 22, "READOUT"), (82, 17.5, "EVALUATION")]
-    for x, w, lab in cols:
-        ax.text(x + w / 2, 65.5, lab, ha="center", va="top", fontsize=f_head, color="#707b7c", fontweight="bold")
-        ax.plot([x, x + w], [62.2, 62.2], color="#d5d8dc", lw=0.8)
-    # stages
-    box(1, 28, 15.5, 13, "datasets", "synthetic ($\\alpha$),\ntabular, image,\nTFIM, entangled", "shared")
-    box(18.5, 28, 15.5, 13, "angle encoding", "register split\n$x_A \\mid x_B$", "shared", f_t=6.6)
-    box(36, 36, 20, 12, "coupled QNN", "$k$ cross gates,\ntrained end-to-end", "shared")
-    box(36, 9.5, 20, 12, "uncoupled circuits", "no cross gate,\nshared loss (Alg.~1)", "fusion", f_t=6.6)
-    box(58, 44, 22, 15, "reconstruction (B1)", "$\\kappa^{2k}$ overhead,\nfixed head", "recon",
-        "exact $\\cdot$ Aer $\\cdot$ IBM\nqiskit-addon-cutting")
-    box(58, 26, 22, 15, "dial $Q$ (partial QPD)", "kept QPD terms $+$\nlocal $m_A, m_B$", "dial",
-        "exact $\\cdot$ Aer $\\cdot$ IBM\nqiskit-addon-cutting")
-    box(58, 8, 22, 15, "late fusion (B2)", "trained head $f_\\theta$ on\nlocal $\\langle Z\\rangle$ features", "fusion",
-        "statevector $\\cdot$ shots\nAer $\\cdot$ IBM")
-    box(82, 28, 17.5, 21, "evaluation", "accuracy, F1, AUC,\npaired CIs, TOST,\noverhead, shots,\n$S_A$, knee $Q^\\star$", "eval")
-    box(82, 7, 17.5, 15, "classical anchors", "tuned SVM / MLP\non $x$; split-feature\nfusion on $x_A \\mid x_B$", "shared", dashed=True, f_t=6.6)
-    # flow
-    arrow(16.5, 34.5, 18.5, 34.5); arrow(34, 34.5, 36, 42); arrow(34, 34.5, 36, 15.5)
-    arrow(56, 42, 58, 51.5); arrow(56, 42, 58, 33.5); arrow(56, 15.5, 58, 15.5)
-    arrow(80, 51.5, 82, 44); arrow(80, 33.5, 82, 38.5); arrow(80, 15.5, 82, 33)
-    arrow(90.75, 22, 90.75, 28, color="#707b7c")
-    # colour key
-    kx = 1
-    for kind, lab in [("shared", "shared stage"), ("recon", "reconstruction path"), ("dial", "intermediate dial"),
-                      ("fusion", "fusion path"), ("eval", "evaluation")]:
-        fc, ec = C[kind]
-        ax.add_patch(mpatches.Rectangle((kx, 1.6), 2.2, 2.2, fc=fc, ec=ec, lw=0.8))
-        ax.text(kx + 3.0, 2.7, lab, ha="left", va="center", fontsize=f_eng, color=soft)
-        kx += 3.0 + 0.92 * len(lab) + 3.0
-    _save(fig, "pipeline")
+            ys = sorted(targets + [y0])
+            ax.plot([x0, xm], [y0, y0], color=line, lw=0.8, solid_capstyle="round")
+            if len(ys) > 1:
+                ax.plot([xm, xm], [ys[0], ys[-1]], color=line, lw=0.8, solid_capstyle="round")
+            for yt in targets:
+                head(xm, x1, yt)
+        def fanin(sources, x0, x1, y1):
+            """branches from several (y) sources into one target through a vertical bus."""
+            xm = (x0 + x1) / 2
+            ys = sorted(sources + [y1])
+            for ys0 in sources:
+                ax.plot([x0, xm], [ys0, ys0], color=line, lw=0.8, solid_capstyle="round")
+            ax.plot([xm, xm], [ys[0], ys[-1]], color=line, lw=0.8, solid_capstyle="round")
+            head(xm, x1, y1)
+        # columns: x, width (gaps of 4 units carry the connectors)
+        cols = [(1, 14.5, "DATA"), (19.5, 14.5, "ENCODING"), (38, 19, "CIRCUIT"), (61, 20.5, "READOUT"), (85.5, 14, "EVALUATION")]
+        for x, w, lab in cols:
+            ax.text(x + w / 2, 65.5, lab, ha="center", va="top", fontsize=f_head, color="#707b7c", fontweight="bold")
+            ax.plot([x, x + w], [62.4, 62.4], color="#d5d8dc", lw=0.8)
+        H = 15.5
+        box(1, 27.5, 14.5, 12, "datasets", "synthetic ($\\alpha$),\ntabular, image,\nTFIM, entangled", "shared")
+        box(19.5, 27.5, 14.5, 12, "angle encoding", "register split\n$x_A \\mid x_B$", "shared")
+        box(38, 35.5, 19, 11, "coupled QNN", "$k$ cross gates,\ntrained end-to-end", "shared")
+        box(38, 9.25, 19, 11, "uncoupled circuits", "no cross gate,\nshared loss (Alg. 1)", "fusion")
+        box(61, 43, 20.5, H, "reconstruction (B1)", "$\\kappa^{2k}$ overhead,\nfixed head", "recon",
+            "exact $\\cdot$ Aer $\\cdot$ IBM\nqiskit-addon-cutting")
+        box(61, 25, 20.5, H, "dial $Q$ (partial QPD)", "kept QPD terms $+$\nlocal $m_A, m_B$", "dial",
+            "exact $\\cdot$ Aer $\\cdot$ IBM\nqiskit-addon-cutting")
+        box(61, 7, 20.5, H, "late fusion (B2)", "trained head $f_\\theta$ on\nlocal $\\langle Z\\rangle$ features", "fusion",
+            "statevector $\\cdot$ shots\nAer $\\cdot$ IBM")
+        box(85.5, 27, 14, 20, "evaluation", "accuracy, F1, AUC,\npaired CIs, TOST,\noverhead, shots,\n$S_A$, knee $Q^\\star$", "eval")
+        box(85.5, 6, 14, 14.5, "classical anchors", "tuned SVM / MLP\non $x$; split-feature\nfusion on $x_A \\mid x_B$", "shared", dashed=True)
+        # connectors: data -> encoding -> {coupled, uncoupled}; coupled -> {B1, dial}; uncoupled -> B2; readouts -> evaluation
+        head(15.5, 19.5, 33.5)
+        fanout(34, 33.5, 38, [41, 14.75])
+        fanout(57, 41, 61, [50.75, 32.75])
+        head(57, 61, 14.75)
+        fanin([50.75, 32.75, 14.75], 81.5, 85.5, 37)
+        ax.annotate("", xy=(92.5, 27), xytext=(92.5, 20.5), arrowprops=dict(arrowstyle="-|>", lw=0.8, color="#707b7c", shrinkA=0, shrinkB=0, mutation_scale=6))
+        # colour key
+        kx = 1
+        for kind, lab in [("shared", "shared stage"), ("recon", "reconstruction path"), ("dial", "intermediate dial"),
+                          ("fusion", "fusion path"), ("eval", "evaluation")]:
+            fc, ec = C[kind]
+            ax.add_patch(mpatches.Rectangle((kx, 1.2), 2.0, 2.0, fc=fc, ec=ec, lw=0.8))
+            ax.text(kx + 2.8, 2.2, lab, ha="left", va="center", fontsize=f_eng, color=soft)
+            kx += 2.8 + 0.86 * len(lab) + 3.0
+        _save(fig, "pipeline", tight=False)
 
 FIGURES = [fig_qdial_physical, fig_deep_coupling, fig_pipeline, fig_cost_crossover, fig_independent, fig_shot_robustness,
            fig_regime_boundary, fig_trainability, fig_qdial_frontier,
