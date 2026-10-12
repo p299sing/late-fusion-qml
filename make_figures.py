@@ -2,11 +2,16 @@
 make_figures.py -- regenerate ALL paper figures from results/*.json.
 
 One function per figure so you can tweak layout/colors/sizes independently.
-Writes PNG (and PDF) into paper/figures/. Run:  python make_figures.py
+Writes PNG (and PDF) into paper/figures/ (two-column AAAI sizes). Run:  python make_figures.py
+Journal (Quantum Machine Intelligence, single column, 372pt text width) sizes:
+    python make_figures.py --journal        -> paper/figures_qmi/
+In journal mode every single-plot figure is 3.6 x 2.45 in and every panel figure spans the
+5.15 in text width; all are included at natural size, so lettering is 8-9 pt on the page.
 Edit STYLE below for global look; edit each fig_*() for per-figure layout.
 """
 import json
 import os
+import sys
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -27,6 +32,21 @@ STYLE = {
     "gray": "#566573",          # (>=4.5:1 on white)
     "fontsize": 8,
 }
+JOURNAL = ("--journal" in sys.argv) or os.environ.get("LFQML_FIG_MODE", "").lower() == "journal"
+if JOURNAL:
+    OUT = os.path.join(HERE, "paper", "figures_qmi"); os.makedirs(OUT, exist_ok=True)
+    STYLE["fontsize"] = 9
+W1 = 3.6 if JOURNAL else 3.4      # single-plot figure width (in); journal: included at natural size
+H1 = 2.45                         # uniform single-plot height in journal mode
+WP = 5.15 if JOURNAL else 7.0     # full-text-width panel figures
+SMALL = STYLE["fontsize"] - 1     # legends, annotations (8 pt in journal mode)
+def _fs(h=None):
+    """single-plot figsize: uniform in journal mode, legacy height otherwise."""
+    return (W1, H1 if (JOURNAL or h is None) else h)
+def _fsp(h_journal, h_aaai=None):
+    """panel figsize spanning the text width."""
+    return (WP, h_journal if JOURNAL else (h_aaai or h_journal))
+STYLE["figsize"] = _fs(2.6)
 plt.rcParams.update({
     # AAAI forbids Type 3 fonts, even inside graphics -> embed TrueType (Type 42)
     "pdf.fonttype": 42, "ps.fonttype": 42,
@@ -42,8 +62,8 @@ def _load(name):
         return json.load(f)
 
 
-def _save(fig, name):
-    fig.tight_layout(pad=0.4)
+def _save(fig, name, w_pad=None):
+    fig.tight_layout(pad=0.4, **({"w_pad": w_pad} if w_pad else {}))
     fig.savefig(os.path.join(OUT, name + ".png"), dpi=STYLE["dpi"], bbox_inches="tight")
     fig.savefig(os.path.join(OUT, name + ".pdf"), bbox_inches="tight")
     plt.close(fig)
@@ -80,7 +100,7 @@ def fig_cost_crossover():
 
 def fig_independent():
     rows = _load("independent_results.json")
-    fig, ax = plt.subplots(figsize=(3.4, 1.95))
+    fig, ax = plt.subplots(figsize=_fs(1.95))
     for key, lab, mk, c in [("acc_B0", "reconstruction", "^", STYLE["recon_color"]),
                             ("acc_frozen", "frozen fusion", "s", STYLE["gray"]),
                             ("acc_indep", "independent fusion", "o", STYLE["fusion_color"])]:
@@ -108,7 +128,7 @@ def fig_regime_boundary():
     xs, ff, sf = _agg(rows, "data_entanglement", "acc_fusion")
     _, jj, sj = _agg(rows, "data_entanglement", "acc_joint")
     o = np.argsort(xs)
-    fig, ax = plt.subplots(figsize=(3.4, 1.95))
+    fig, ax = plt.subplots(figsize=_fs(1.95))
     ax.errorbar(xs[o], ff[o], yerr=sf[o], marker="s", color=STYLE["fusion_color"],
                 label="late fusion (local)", capsize=2, ms=4)
     ax.errorbar(xs[o], jj[o], yerr=sj[o], marker="^", color=STYLE["recon_color"],
@@ -134,7 +154,7 @@ def fig_qdial_frontier():
     rows = _load("h1_results.json")
     alphas = sorted(set(r["alpha"] for r in rows))
     picks = [alphas[0], alphas[len(alphas) // 2], alphas[-1]]
-    fig, ax = plt.subplots(figsize=(3.4, 1.78))
+    fig, ax = plt.subplots(figsize=_fs(1.78))
     colors = [STYLE["fusion_color"], STYLE["accent"], STYLE["recon_color"]]
     for a, c in zip(picks, colors):
         curves = [r["Qdial"] for r in rows if r["alpha"] == a]
@@ -211,7 +231,7 @@ def fig_scale_qubits():
 
 def fig_overhead_panel():
     """(a) cost crossover on our simulator + (b) real qiskit-addon-cutting 9^k, one figure*."""
-    fig, (ax1, ax3) = plt.subplots(1, 2, figsize=(7.0, 2.3))
+    fig, (ax1, ax3) = plt.subplots(1, 2, figsize=_fsp(2.4, 2.3))
     rows = _load("scaling_results.json")
     ks, rec, _ = _agg(rows, "n_cuts", "recon_overhead")
     _, fus, _ = _agg(rows, "n_cuts", "fusion_overhead")
@@ -226,21 +246,21 @@ def fig_overhead_panel():
     ax2.plot(ks, a2, "v--", color=STYLE["accent"], lw=1, label="acc (fusion)")
     ax2.set_ylabel("accuracy"); ax2.set_ylim(0, 1.05); ax2.spines["top"].set_visible(False)
     lines = ax1.get_lines() + ax2.get_lines()
-    ax1.legend(lines, [l.get_label() for l in lines], fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=4, frameon=False)
+    ax1.legend(lines, [l.get_label() for l in lines], fontsize=SMALL, loc="upper center", bbox_to_anchor=(0.5, -0.26), ncol=2 if JOURNAL else 4, frameon=False)
     rows = _load("qiskit_results.json")
     ks = [r["n_cuts"] for r in rows]
     ax3.semilogy(ks, [r["real_overhead"] for r in rows], "o-", color=STYLE["recon_color"],
                  label="real overhead")
     ax3.semilogy(ks, [9 ** k for k in ks], ":", color="k", lw=0.8, label="$9^k$")
     ax3.set_xlabel("number of cuts $k$"); ax3.set_ylabel("physical overhead $\\gamma^2$")
-    ax3.set_xticks(ks); ax3.legend()
+    ax3.set_xticks(ks); ax3.legend(loc="lower right")
     ax3.set_title("(b) qiskit-addon-cutting: overhead $= 9^k$")
-    _save(fig, "overhead_panel")
+    _save(fig, "overhead_panel", w_pad=3.5 if JOURNAL else None)
 
 
 def fig_noise_panel():
     """(a) finite-shot robustness + (b) device-noise error, one figure*."""
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 1.72))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=_fsp(2.2, 1.72))
     rows = _load("shots_results.json")
     xs, rec, _ = _agg(rows, "shots", "acc_recon")
     _, fus, _ = _agg(rows, "shots", "acc_fusion")
@@ -257,7 +277,7 @@ def fig_noise_panel():
              label="fusion feature")
     ax2.set_xlabel("number of cuts $k$"); ax2.set_ylabel(r"$|\hat O-O|$ device noise")
     ax2.set_xticks(ks); ax2.set_ylim(0, None); ax2.legend(); ax2.set_title("(b) device noise")
-    _save(fig, "noise_panel")
+    _save(fig, "noise_panel", w_pad=2.5 if JOURNAL else None)
 
 
 def fig_scaling_panel():
@@ -265,9 +285,14 @@ def fig_scaling_panel():
     # This panel is placed at 0.90\textwidth, so everything here renders at 0.9x:
     # AXLBL 6.5 -> 5.9pt, ticks 6.0 -> 5.4pt, legend 5.0 -> 4.5pt on paper.
     # Keep AXLBL > tick size so the hierarchy reads correctly.
-    AXLBL, TICKLBL, LEGSZ = 8.0, 7.5, 7.0
-    fig, (ax1, ax2, ax4) = plt.subplots(1, 3, figsize=(7.0, 2.2),
-                                        gridspec_kw={"width_ratios": [1.5, 1.2, 1]})
+    AXLBL, TICKLBL, LEGSZ = STYLE["fontsize"], STYLE["fontsize"] - 0.5, SMALL
+    if JOURNAL:   # (a) spans the text width; (b) and (c) share the second row at equal size
+        fig = plt.figure(figsize=(WP, 4.4))
+        gs = fig.add_gridspec(2, 2, height_ratios=[1.15, 1], hspace=0.55, wspace=0.85)
+        ax1 = fig.add_subplot(gs[0, :]); ax2 = fig.add_subplot(gs[1, 0]); ax4 = fig.add_subplot(gs[1, 1])
+    else:
+        fig, (ax1, ax2, ax4) = plt.subplots(1, 3, figsize=(7.0, 2.2),
+                                            gridspec_kw={"width_ratios": [1.5, 1.2, 1]})
     rows = _load("scaleup_results.json")
     try:   # n=14 exact-reference extension (exp_scaleup14): one aggregated point at k=7
         try:
@@ -289,7 +314,7 @@ def fig_scaling_panel():
     (l_ovr,) = ax1.semilogy(ks, [r["recon_overhead_9k"] for r in rows], ":",
                             color=STYLE["recon_color"], lw=1, label="recon overhead $9^k$")
     ax1.axhspan(1e6, 2e10, color=STYLE["recon_color"], alpha=0.08)
-    ax1.text(1.1, 3e9, "reconstruction infeasible", fontsize=6.5, color=STYLE["recon_color"])
+    ax1.text(1.1, 3e9, "reconstruction infeasible", fontsize=SMALL, color=STYLE["recon_color"])
     ax1.set_xlabel("number of cuts $k$"); ax1.set_ylabel("sampling overhead")
     ax1.set_ylim(1, 2e10); ax1.set_xticks(sorted(set(ks)))
     ax1.set_title("(a) fusion at scale")
@@ -311,13 +336,16 @@ def fig_scaling_panel():
             # white halo: the dotted 9^k overhead curve passes through these labels
             ax1b.annotate(f"$n{{=}}{r['qubits']}$", (r["n_cuts"], r["acc_fusion"]),
                           textcoords="offset points", xytext=(3 if last else 0, dy),
-                          fontsize=7, ha="right" if last else "center",
+                          fontsize=SMALL, ha="right" if last else "center",
                           bbox=dict(facecolor="white", edgecolor="none",
                                     boxstyle="square,pad=0.12", alpha=0.85))
     ax1b.set_ylabel("accuracy"); ax1b.set_ylim(0.4, 1.05)
     ax1b.spines["top"].set_visible(False)
     handles = [l_ovr, l_b0, err_fu]
-    ax1.legend(handles, [h.get_label() for h in handles], fontsize=LEGSZ, loc="upper center", bbox_to_anchor=(0.5, -0.30), ncol=2, frameon=False, columnspacing=0.8, handletextpad=0.4)
+    if JOURNAL:
+        ax1.legend(handles, [h.get_label() for h in handles], fontsize=LEGSZ, loc="lower right", ncol=1, frameon=True, framealpha=0.9, edgecolor="none")
+    else:
+        ax1.legend(handles, [h.get_label() for h in handles], fontsize=LEGSZ, loc="upper center", bbox_to_anchor=(0.5, -0.30), ncol=2, frameon=False, columnspacing=0.8, handletextpad=0.4)
     rows = _load("multilayer_results.json")
     Ls = [r["layers"] for r in rows]
     ax2.plot(Ls, [r["cut_entropy"] for r in rows], "o-", color="#8e44ad", label="cut entropy")
@@ -329,7 +357,7 @@ def fig_scaling_panel():
     ax3.set_ylabel(r"$|\langle Z_aZ_b\rangle-\langle Z_a\rangle\langle Z_b\rangle|$")
     ax3.spines["top"].set_visible(False)
     lines = ax2.get_lines() + ax3.get_lines()
-    ax2.legend(lines, [l.get_label() for l in lines], fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.30), ncol=1, frameon=False)
+    ax2.legend(lines, [l.get_label() for l in lines], fontsize=SMALL, loc="upper center", bbox_to_anchor=(0.5, -0.30 if not JOURNAL else -0.32), ncol=1, frameon=False)
     d = _load("tfim_results.json")
     curve = d["entropy_curve"]
     ax4.plot(curve["g"], curve["S_A"], "-", color="#8e44ad", lw=1)
@@ -399,7 +427,7 @@ def fig_qdial_physical():
     d = _load("qdial_physical_results.json"); rows = d["rows"]
     picks = [0.0, 0.5, 1.0]
     colors = [STYLE["fusion_color"], STYLE["accent"], STYLE["recon_color"]]
-    fig, ax = plt.subplots(figsize=(3.4, 2.1))
+    fig, ax = plt.subplots(figsize=_fs(2.1))
     for a, c in zip(picks, colors):
         rs = [r for r in rows if r["alpha"] == a]
         Qs = [q["Q"] for q in rs[0]["physical_exact"]]
@@ -421,7 +449,7 @@ def fig_qdial_physical():
     ax.plot([], [], marker="*", ms=7, color="gray", ls="none", label="fixed-head recon.")
     ax.set_xscale("log"); ax.set_xlabel("retained physical sampling overhead $(\\sum_{\\mathrm{kept}}|a_i|)^2$")
     ax.set_ylabel("accuracy"); ax.set_ylim(0.6, 1.0)
-    ax.legend(ncol=2, fontsize=STYLE["fontsize"] - 2.5, loc="lower right")
+    ax.legend(ncol=2, fontsize=SMALL - (0 if JOURNAL else 1.5), loc="lower right")
     _save(fig, "qdial_physical")
 
 
@@ -430,10 +458,10 @@ def fig_deep_coupling():
     (a) trained cut entanglement S_A, (b) uncoupled-fusion gap, (c) frozen (cut-free) gap."""
     d = _load("deep_coupling_results.json"); rows = d["rows"]
     Ls = sorted(set(r["L"] for r in rows)); als = sorted(set(r["alpha"] for r in rows)); ks = sorted(set(r["k"] for r in rows))
-    panels = [("S_A", "trained cut entanglement $S_A$ (bits)", "Purples", (0, 1.0)),
+    panels = [("S_A", "cut entanglement $S_A$ (bits)", "Purples", (0, 1.0)),
               ("gap_uncoupled", "uncoupled-fusion gap", "RdBu_r", (-0.1, 0.1)),
               ("gap_frozen_cutfree", "frozen-fusion gap", "RdBu_r", (-0.1, 0.25))]
-    fig, axes = plt.subplots(len(ks), len(panels), figsize=(7.0, 1.55 * len(ks) + 0.4), squeeze=False)
+    fig, axes = plt.subplots(len(ks), len(panels), figsize=(WP, (1.75 if JOURNAL else 1.55) * len(ks) + 0.4), squeeze=False)
     for i, k in enumerate(ks):
         for j, (key, title, cmap, (vmin, vmax)) in enumerate(panels):
             val = (lambda r: r["acc_coupled"] - r["acc_frozen_cutfree"]) if key == "gap_frozen_cutfree" else (lambda r: r[key])
@@ -442,51 +470,77 @@ def fig_deep_coupling():
             ax = axes[i, j]
             im = ax.imshow(M, cmap=cmap, vmin=vmin, vmax=vmax, aspect="auto", origin="lower")
             for (li, ai), v in np.ndenumerate(M):
-                ax.text(ai, li, f"{v:.2f}", ha="center", va="center", fontsize=STYLE["fontsize"] - 1.5,
+                ax.text(ai, li, f"{v:.2f}", ha="center", va="center", fontsize=6.5 if JOURNAL else SMALL,
                         color="white" if (cmap == "Purples" and v > 0.55) else "black")
             ax.set_xticks(range(len(als))); ax.set_xticklabels([f"{a:g}" for a in als])
             ax.set_yticks(range(len(Ls))); ax.set_yticklabels([str(L) for L in Ls])
             if i == len(ks) - 1: ax.set_xlabel("cross-cut dependence $\\alpha$")
             if j == 0: ax.set_ylabel(f"coupling layers $L$ ($k{{=}}{k}$)")
             if i == 0: ax.set_title(title, fontsize=STYLE["fontsize"] - 1)
-            fig.colorbar(im, ax=ax, fraction=0.046, pad=0.03)
-    fig.tight_layout()
+            fig.colorbar(im, ax=ax, fraction=0.04, pad=0.02)
+    fig.tight_layout(w_pad=1.5 if JOURNAL else 1.08)
     _save(fig, "deep_coupling")
 
 
 def fig_pipeline():
-    """Experimental/tool flow schematic (reviewer R2-W5): data -> encoding -> cut -> readouts
-    -> metrics, with the engine used at each stage."""
+    """Experimental and tool flow (Fig. 1): data -> encoding -> circuit -> readout -> evaluation.
+    Column headers name the stage; box colour names the path (grey shared, red reconstruction,
+    amber intermediate dial, blue fusion, green evaluation); the italic lines inside each readout
+    box name the engines that executed it."""
     import matplotlib.patches as mpatches
-    fs = STYLE["fontsize"] - 2.5; fe = STYLE["fontsize"] - 3.5
-    fig, ax = plt.subplots(figsize=(7.2, 3.0)); ax.set_xlim(0, 100); ax.set_ylim(0, 46); ax.axis("off")
-    def box(x, y, w, h, lines, fc, engine=None):
-        ax.add_patch(mpatches.FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.3", fc=fc, ec="black", lw=0.8))
-        ty = y + h / 2 + (2.2 if engine else 0)
-        ax.text(x + w / 2, ty, lines, ha="center", va="center", fontsize=fs, linespacing=1.15)
+    f_head, f_title, f_body, f_eng = 7.0, 7.0, 6.5, 6.0
+    fig, ax = plt.subplots(figsize=(WP, WP * 0.66))
+    ax.set_xlim(0, 100); ax.set_ylim(0, 66); ax.axis("off")
+    C = {"shared": ("#f2f3f4", "#5d6d7e"), "recon": ("#fadbd8", "#c0392b"), "dial": ("#fdebd0", "#b9770e"),
+         "fusion": ("#d6eaf8", "#2471a3"), "eval": ("#e3f1e5", "#1e8449")}
+    ink, soft = "#1b2631", "#515a5a"
+    def box(x, y, w, h, title, body, kind, engine=None, dashed=False, f_t=None):
+        fc, ec = ("white", "#707b7c") if dashed else C[kind]
+        ax.add_patch(mpatches.FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=1.0",
+                                             fc=fc, ec=ec, lw=0.9, ls=(0, (3, 2)) if dashed else "-"))
+        top = y + h - 1.4
+        ax.text(x + w / 2, top, title, ha="center", va="top", fontsize=f_t or f_title, fontweight="bold", color=ink)
+        ax.text(x + w / 2, top - 2.9, body, ha="center", va="top", fontsize=f_body, linespacing=1.3, color=ink)
         if engine:
-            ax.text(x + w / 2, y + 2.2, engine, ha="center", va="center", fontsize=fe, color="#444444", style="italic")
-    def arrow(x0, y0, x1, y1):
-        ax.annotate("", xy=(x1, y1), xytext=(x0, y0), arrowprops=dict(arrowstyle="->", lw=0.9, shrinkA=0, shrinkB=0))
-    grey, blue, red, green = "#eeeeee", "#d6e4f0", "#f5d5d1", "#e2f0dd"
-    box(1, 19, 15, 13, "data\nsynthetic $\\alpha$, tabular,\nimages, TFIM, entangled", grey)
-    box(19, 19, 14, 13, "angle encoding\nregister split\n$x_A \\mid x_B$", grey)
-    box(36, 19, 14, 13, "coupled QNN\n$k$ cross gates\ntrained end-to-end", grey)
-    box(36, 2, 14, 13, "uncoupled\nsubcircuits\n(Alg. 1)", blue)
-    box(53, 32, 24, 13, "QPD reconstruction (B1)\n$\\kappa^{2k}$ overhead, fixed head", red,
-        "exact | qiskit-addon-cutting | Aer | IBM")
-    box(53, 17, 24, 13, "reconstruction dial $Q$\nkept QPD terms + local $m_A,m_B$", red,
-        "exact | qiskit-addon-cutting | Aer")
-    box(53, 2, 24, 13, "late fusion head $f_\\theta$\nlocal $\\langle Z\\rangle$ features only", blue,
-        "statevector | shots | Aer | IBM")
-    box(80, 10, 19, 28, "metrics\n\naccuracy, F1, AUC\npaired CIs, TOST\nsampling overhead,\nsubexperiments, shots\ncut entropy $S_A$,\nknee $Q^\\star$", green)
-    arrow(16, 25.5, 19, 25.5); arrow(33, 25.5, 36, 25.5); arrow(33, 22, 36, 10)
-    arrow(50, 28, 53, 37); arrow(50, 25.5, 53, 23.5); arrow(50, 8.5, 53, 8.5)
-    arrow(77, 38.5, 80, 32); arrow(77, 23.5, 80, 24); arrow(77, 8.5, 80, 16)
-    ax.text(16.5, 9, "classical anchors: tuned SVM / MLP on $x$;\nclassical split-feature fusion on $x_A \\mid x_B$",
-            ha="center", va="center", fontsize=fe, style="italic", color="#444444")
+            ax.text(x + w / 2, y + 1.1, engine, ha="center", va="bottom", fontsize=f_eng, style="italic", linespacing=1.3, color=soft)
+    def arrow(x0, y0, x1, y1, color="#2c3e50"):
+        if abs(y0 - y1) > 1e-9:
+            xm = (x0 + x1) / 2
+            ax.plot([x0, xm, xm], [y0, y0, y1], color=color, lw=0.8, solid_capstyle="round", solid_joinstyle="round")
+            x0, y0 = xm, y1
+        ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                    arrowprops=dict(arrowstyle="-|>", lw=0.8, color=color, shrinkA=0, shrinkB=0, mutation_scale=6))
+    cols = [(1, 15.5, "DATA"), (18.5, 15.5, "ENCODING"), (36, 20, "CIRCUIT"), (58, 22, "READOUT"), (82, 17.5, "EVALUATION")]
+    for x, w, lab in cols:
+        ax.text(x + w / 2, 65.5, lab, ha="center", va="top", fontsize=f_head, color="#707b7c", fontweight="bold")
+        ax.plot([x, x + w], [62.2, 62.2], color="#d5d8dc", lw=0.8)
+    # stages
+    box(1, 28, 15.5, 13, "datasets", "synthetic ($\\alpha$),\ntabular, image,\nTFIM, entangled", "shared")
+    box(18.5, 28, 15.5, 13, "angle encoding", "register split\n$x_A \\mid x_B$", "shared", f_t=6.6)
+    box(36, 36, 20, 12, "coupled QNN", "$k$ cross gates,\ntrained end-to-end", "shared")
+    box(36, 9.5, 20, 12, "uncoupled circuits", "no cross gate,\nshared loss (Alg.~1)", "fusion", f_t=6.6)
+    box(58, 44, 22, 15, "reconstruction (B1)", "$\\kappa^{2k}$ overhead,\nfixed head", "recon",
+        "exact $\\cdot$ Aer $\\cdot$ IBM\nqiskit-addon-cutting")
+    box(58, 26, 22, 15, "dial $Q$ (partial QPD)", "kept QPD terms $+$\nlocal $m_A, m_B$", "dial",
+        "exact $\\cdot$ Aer $\\cdot$ IBM\nqiskit-addon-cutting")
+    box(58, 8, 22, 15, "late fusion (B2)", "trained head $f_\\theta$ on\nlocal $\\langle Z\\rangle$ features", "fusion",
+        "statevector $\\cdot$ shots\nAer $\\cdot$ IBM")
+    box(82, 28, 17.5, 21, "evaluation", "accuracy, F1, AUC,\npaired CIs, TOST,\noverhead, shots,\n$S_A$, knee $Q^\\star$", "eval")
+    box(82, 7, 17.5, 15, "classical anchors", "tuned SVM / MLP\non $x$; split-feature\nfusion on $x_A \\mid x_B$", "shared", dashed=True, f_t=6.6)
+    # flow
+    arrow(16.5, 34.5, 18.5, 34.5); arrow(34, 34.5, 36, 42); arrow(34, 34.5, 36, 15.5)
+    arrow(56, 42, 58, 51.5); arrow(56, 42, 58, 33.5); arrow(56, 15.5, 58, 15.5)
+    arrow(80, 51.5, 82, 44); arrow(80, 33.5, 82, 38.5); arrow(80, 15.5, 82, 33)
+    arrow(90.75, 22, 90.75, 28, color="#707b7c")
+    # colour key
+    kx = 1
+    for kind, lab in [("shared", "shared stage"), ("recon", "reconstruction path"), ("dial", "intermediate dial"),
+                      ("fusion", "fusion path"), ("eval", "evaluation")]:
+        fc, ec = C[kind]
+        ax.add_patch(mpatches.Rectangle((kx, 1.6), 2.2, 2.2, fc=fc, ec=ec, lw=0.8))
+        ax.text(kx + 3.0, 2.7, lab, ha="left", va="center", fontsize=f_eng, color=soft)
+        kx += 3.0 + 0.92 * len(lab) + 3.0
     _save(fig, "pipeline")
-
 
 FIGURES = [fig_qdial_physical, fig_deep_coupling, fig_pipeline, fig_cost_crossover, fig_independent, fig_shot_robustness,
            fig_regime_boundary, fig_trainability, fig_qdial_frontier,
