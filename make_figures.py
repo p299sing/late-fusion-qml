@@ -503,7 +503,7 @@ def fig_pipeline():
             fam = PIPELINE_FONT
     rc = {"font.family": fam, "mathtext.fontset": "custom", "mathtext.rm": fam, "mathtext.it": fam + ":italic",
           "mathtext.bf": fam + ":bold", "mathtext.sf": fam, "mathtext.cal": fam} if fam else {}
-    f_head, f_title, f_body, f_eng = 6.5, 6.5, 6.0, 5.5
+    f_head, f_title, f_body, f_eng = (6.5, 6.5, 6.0, 5.5) if fam else (6.5, 5.9, 5.8, 5.3)   # DejaVu is wider
     with plt.rc_context(rc):
         fig, ax = plt.subplots(figsize=(WP, WP * 0.66))
         fig.subplots_adjust(0, 0, 1, 1)
@@ -541,30 +541,30 @@ def fig_pipeline():
             ax.plot([xm, xm], [ys[0], ys[-1]], color=line, lw=0.8, solid_capstyle="round")
             head(xm, x1, y1)
         # columns: x, width (gaps of 4 units carry the connectors)
-        cols = [(1, 14.5, "DATA"), (19.5, 14.5, "ENCODING"), (38, 19, "CIRCUIT"), (61, 20.5, "READOUT"), (85.5, 14, "EVALUATION")]
+        cols = [(1, 14.5, "DATA"), (19.5, 14.5, "ENCODING"), (38, 18, "CIRCUIT"), (60, 19.5, "READOUT"), (83.5, 16, "EVALUATION")]
         for x, w, lab in cols:
             ax.text(x + w / 2, 65.5, lab, ha="center", va="top", fontsize=f_head, color="#707b7c", fontweight="bold")
             ax.plot([x, x + w], [62.4, 62.4], color="#d5d8dc", lw=0.8)
         H = 15.5
         box(1, 27.5, 14.5, 12, "datasets", "synthetic ($\\alpha$),\ntabular, image,\nTFIM, entangled", "shared")
         box(19.5, 27.5, 14.5, 12, "angle encoding", "register split\n$x_A \\mid x_B$", "shared")
-        box(38, 35.5, 19, 11, "coupled QNN", "$k$ cross gates,\ntrained end-to-end", "shared")
-        box(38, 9.25, 19, 11, "uncoupled circuits", "no cross gate,\nshared loss (Alg. 1)", "fusion")
-        box(61, 43, 20.5, H, "reconstruction (B1)", "$\\kappa^{2k}$ overhead,\nfixed head", "recon",
+        box(38, 35.5, 18, 11, "coupled QNN", "$k$ cross gates,\ntrained end-to-end", "shared")
+        box(38, 9.25, 18, 11, "uncoupled circuits", "no cross gate,\nshared loss (Alg. 1)", "fusion")
+        box(60, 43, 19.5, H, "reconstruction (B1)", "$\\kappa^{2k}$ overhead,\nfixed head", "recon",
             "exact $\\cdot$ Aer $\\cdot$ IBM\nqiskit-addon-cutting")
-        box(61, 25, 20.5, H, "dial $Q$ (partial QPD)", "kept QPD terms $+$\nlocal $m_A, m_B$", "dial",
+        box(60, 25, 19.5, H, "dial $Q$ (partial QPD)", "kept QPD terms $+$\nlocal $m_A, m_B$", "dial",
             "exact $\\cdot$ Aer $\\cdot$ IBM\nqiskit-addon-cutting")
-        box(61, 7, 20.5, H, "late fusion (B2)", "trained head $f_\\theta$ on\nlocal $\\langle Z\\rangle$ features", "fusion",
+        box(60, 7, 19.5, H, "late fusion (B2)", "trained head $f_\\theta$ on\nlocal $\\langle Z\\rangle$ features", "fusion",
             "statevector $\\cdot$ shots\nAer $\\cdot$ IBM")
-        box(85.5, 27, 14, 20, "evaluation", "accuracy, F1, AUC,\npaired CIs, TOST,\noverhead, shots,\n$S_A$, knee $Q^\\star$", "eval")
-        box(85.5, 6, 14, 14.5, "classical anchors", "tuned SVM / MLP\non $x$; split-feature\nfusion on $x_A \\mid x_B$", "shared", dashed=True)
+        box(83.5, 27, 16, 20, "evaluation", "accuracy, F1, AUC,\npaired CIs, TOST,\noverhead, shots,\n$S_A$, knee $Q^\\star$", "eval")
+        box(83.5, 6, 16, 14.5, "classical anchors", "tuned SVM / MLP\non $x$; split-feature\nfusion on $x_A \\mid x_B$", "shared", dashed=True)
         # connectors: data -> encoding -> {coupled, uncoupled}; coupled -> {B1, dial}; uncoupled -> B2; readouts -> evaluation
         head(15.5, 19.5, 33.5)
         fanout(34, 33.5, 38, [41, 14.75])
-        fanout(57, 41, 61, [50.75, 32.75])
-        head(57, 61, 14.75)
-        fanin([50.75, 32.75, 14.75], 81.5, 85.5, 37)
-        ax.annotate("", xy=(92.5, 27), xytext=(92.5, 20.5), arrowprops=dict(arrowstyle="-|>", lw=0.8, color="#707b7c", shrinkA=0, shrinkB=0, mutation_scale=6))
+        fanout(56, 41, 60, [50.75, 32.75])
+        head(56, 60, 14.75)
+        fanin([50.75, 32.75, 14.75], 79.5, 83.5, 37)
+        ax.annotate("", xy=(91.5, 27), xytext=(91.5, 20.5), arrowprops=dict(arrowstyle="-|>", lw=0.8, color="#707b7c", shrinkA=0, shrinkB=0, mutation_scale=6))
         # colour key
         kx = 1
         for kind, lab in [("shared", "shared stage"), ("recon", "reconstruction path"), ("dial", "intermediate dial"),
